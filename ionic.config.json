@@ -1,0 +1,7 @@
+{
+  "name": "pickaboxApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
