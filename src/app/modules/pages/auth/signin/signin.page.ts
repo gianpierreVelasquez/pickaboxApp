@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { FormProvider } from 'src/app/core/services/form-provider.service';
 import { GeneralService } from 'src/app/core/services/general.service';
 import { GeneralLang } from 'src/app/shared/lang/general.lang';
@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 })
 export class SigninPage implements OnInit {
 
+  loginForm: FormGroup;
   logo = LOGO_ICON;
   appName = environment.app_name;
   btnSignin = GeneralLang.Buttons.Signin;
@@ -22,14 +23,14 @@ export class SigninPage implements OnInit {
 
   validations = VALIDATIONS;
 
-  loginForm: FormGroup;
+ 
 
   constructor(
-    private readonly _formProvider: FormProvider,
+    private readonly _frmProvider: FormProvider, 
     private readonly _generalServ: GeneralService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this._initValues();
   }
 
@@ -47,7 +48,7 @@ export class SigninPage implements OnInit {
   }
 
   _initValues(): void {
-    this.loginForm = this._formProvider.loginForm();
+    this.loginForm = this._frmProvider.loginFrm();
   }
 
 }

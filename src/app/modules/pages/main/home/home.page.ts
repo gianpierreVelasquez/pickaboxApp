@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
+import { GeneralLang } from 'src/app/shared/lang/general.lang';
 import { IHeader, OptionProps } from 'src/app/shared/models/general.interface';
 import { IUser } from 'src/app/shared/models/user.interface';
 
@@ -10,17 +11,17 @@ import { IUser } from 'src/app/shared/models/user.interface';
 })
 export class HomePage implements OnInit {
 
-  // headerSettings: HeaderProps = {
-  //   title: 'Menú Principal',
-  //   hasSubtitle: false,
-  //   back: {
-  //     status: false
-  //   },
-  //   extra: {
-  //     status: true,
-  //     icon: 'ellipsis-vertical'
-  //   }
-  // }
+  headerSettings: IHeader = {
+    title: 'Menú Principal',
+    hasSubtitle: false,
+    back: {
+      status: false
+    },
+    extra: {
+      status: true,
+      icon: 'ellipsis-vertical'
+    }
+  }
 
   optionList: OptionProps[] = [
     {
@@ -46,6 +47,7 @@ export class HomePage implements OnInit {
   ] 
 
   user: IUser;
+  userlbl = GeneralLang.Labels.User;
 
   constructor(
     private readonly popoverController: PopoverController

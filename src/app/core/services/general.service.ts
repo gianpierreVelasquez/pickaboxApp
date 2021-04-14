@@ -9,7 +9,6 @@ export class GeneralService {
 
   constructor(
     private readonly _router: Router,
-    private readonly _navigationExtras: NavigationExtras,
     private readonly _toastCtrl: ToastController,
     private readonly _loadingCtrl: LoadingController
   ) { }
