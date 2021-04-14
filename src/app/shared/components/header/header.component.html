@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar class="title" [color]="header.barColor || 'primary' ">
+    <ion-buttons *ngIf="header.back.status" slot="start">
+      <ion-button (click)="back()"> {{header.extra.text}}
+        <ion-icon *ngIf="header.back.icon" [icon]="header.extra.icon"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ header.title }}</ion-title>
+    <ion-buttons *ngIf="header.extra.status" slot="end">
+      <ion-button (click)="action($event)"> {{header.extra.text}}
+        <ion-icon *ngIf="header.extra.icon" [icon]="header.extra.icon"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="header.hasSubtitle" class="subtitle" [color]="header.barColor || 'primary'">
+    <ion-label>
+      <h1> {{ header.subtitle }} </h1>
+    </ion-label>
+    <ion-label *ngIf="header.subtext">
+      <p> {{ header.subtext }} </p>
+    </ion-label>
+  </ion-toolbar>
+</ion-header>

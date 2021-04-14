@@ -1,23 +1,28 @@
+// Base Font size Text
+html {
+  font-size: 12px !important;
+}
+
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
-  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary: #356595;
+  --ion-color-primary-rgb: 53, 101, 149;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-shade: #315c86;
+  --ion-color-primary-tint: #456d96;
 
   /** secondary **/
-  --ion-color-secondary: #3dc2ff;
-  --ion-color-secondary-rgb: 61, 194, 255;
+  --ion-color-secondary: #f39c12;
+  --ion-color-secondary-rgb: 243, 156, 18;
   --ion-color-secondary-contrast: #ffffff;
   --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #36abe0;
-  --ion-color-secondary-tint: #50c8ff;
+  --ion-color-secondary-shade: #F4B450;
+  --ion-color-secondary-tint: #E6A33A;
 
   /** tertiary **/
   --ion-color-tertiary: #5260ff;

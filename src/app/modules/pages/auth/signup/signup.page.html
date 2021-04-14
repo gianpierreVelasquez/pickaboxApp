@@ -1,0 +1,60 @@
+<ion-header mode="md" class="ion-no-border" [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="light" defaultHref="auth/signin"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="h-overlay"></div>
+  <div class="container">
+    <div class="form-wrapper ion-justify-content-center">
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item class="g-item--transparent" lines="none">
+            <ion-label class="h-fs--1-4" color="light" mode="ios" position="stacked">Nombres: </ion-label>
+            <ion-input class="g-input g-input--b-gray g-input--br-25" color="dark" type="email" autocomplete="off">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item class="g-item--transparent" lines="none">
+            <ion-label class="h-fs--1-4" color="light" mode="ios" position="stacked">Apellidos: </ion-label>
+            <ion-input class="g-input g-input--b-gray g-input--br-25" color="dark" type="email" autocomplete="off">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item class="g-item--transparent" lines="none">
+            <ion-label class="h-fs--1-4" color="light" mode="ios" position="stacked">Correo: </ion-label>
+            <ion-input class="g-input g-input--b-gray g-input--br-25" color="dark" type="email" autocomplete="off">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item class="g-item--transparent" lines="none">
+            <ion-label class="h-fs--1-4" color="light" mode="ios" position="stacked">Contraseña: </ion-label>
+            <ion-input class="g-input g-input--b-gray g-input--br-25" color="dark" type="password" autocomplete="off">
+            </ion-input>
+          </ion-item>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center h-mt--3">
+        <ion-col class="ion-text-end" size="12">
+          <ion-button color="secondary" size="small" class="h-mb--1 h-mr--1 g-button--br-25" (click)="signup()" disabled>
+            {{btnSignup}}
+            <ion-icon name="chevron-forward"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </div>
+  </div>
+</ion-content>

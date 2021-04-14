@@ -1,0 +1,68 @@
+// custom input
+.g-input {
+    --padding-start: 15px !important;
+    --padding-end: 15px !important;
+    --background: #ffffff;
+
+    &--b-gray {
+        border: 1px solid #f1f1f1;
+    }
+
+    &--b-blue {
+        border: 1px solid #356595;
+    }
+
+    &--br-15 {
+        border-radius: 15px !important;
+    }
+
+    &--br-25 {
+        border-radius: 15px !important;
+    }
+
+    &--br-50 {
+        border-radius: 50% !important;
+    }
+}
+
+// custom button
+.g-button {
+    &--transparent {
+        --background: transparent;
+        --border-color: transparent;
+        --border-radius: 0px;
+        --box-shadow: none;
+    }
+
+    &--br-15 {
+        --border-radius: 15px;
+    }
+
+    &--br-25 {
+        --border-radius: 25px;
+    }
+
+    &--br-50 {
+        --border-radius: 50%;
+    }
+}
+
+// custom item
+.g-item {
+    &--transparent {
+        --background: transparent;
+        --box-shadow: none;
+    }
+}
+
+// input error validation
+.error-container {
+    .error-message {
+        margin: 1px 8%;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        color: red;
+        font-size: 11px;
+    }
+}
