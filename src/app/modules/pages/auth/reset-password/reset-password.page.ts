@@ -29,7 +29,6 @@ export class ResetPasswordPage implements OnInit {
   }
 
   recoverPass(values): void {
-    console.log(values);
     console.log('Missing Service');
   }
 

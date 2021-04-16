@@ -15,4 +15,11 @@ export class FormProvider {
     });
   }
 
+  public prepareFrm(): FormGroup {
+    return new FormGroup({
+      'route': new FormControl(''),
+      'searchText': new FormControl('')
+    });
+  }
+
 }

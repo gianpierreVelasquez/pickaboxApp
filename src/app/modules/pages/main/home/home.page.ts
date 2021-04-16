@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { GeneralService } from 'src/app/core/services/general.service';
+import { HeaderHelperService } from 'src/app/core/services/header-helper.service';
 import { GeneralLang } from 'src/app/shared/lang/general.lang';
 import { IHeader, OptionProps } from 'src/app/shared/models/general.interface';
 import { IUser } from 'src/app/shared/models/user.interface';
@@ -11,59 +12,68 @@ import { IUser } from 'src/app/shared/models/user.interface';
 })
 export class HomePage implements OnInit {
 
-  headerSettings: IHeader = {
-    title: 'Menú Principal',
-    hasSubtitle: false,
-    back: {
-      status: false
-    },
-    extra: {
-      status: true,
-      icon: 'ellipsis-vertical'
-    }
-  }
+  headerSettings: IHeader;
 
   optionList: OptionProps[] = [
     {
       id: '001',
       src: './../../assets/images/option-prepare.png',
-      title: 'Preparar'
+      title: 'Preparar',
+      route: '/main/prepare-order'
     },
     {
       id: '002',
       src: './../../assets/images/option-check.png',
-      title: 'Verificar'
+      title: 'Verificar',
+      route: '/main/check-order'
     },
     {
       id: '003',
       src: './../../assets/images/option-deliver.png',
-      title: 'Entregar'
+      title: 'Entregar',
+      route: '/main/deliver-order'
     },
     {
       id: '004',
       src: './../../assets/images/option-monitor.png',
-      title: 'Monitorear'
+      title: 'Monitorear',
+      route: '/main/monitor'
     }
-  ] 
+  ]
 
   user: IUser;
   userlbl = GeneralLang.Labels.User;
 
   constructor(
-    private readonly popoverController: PopoverController
+    private readonly _headerHelperServ: HeaderHelperService,
+    private readonly _generalServ: GeneralService
   ) { }
 
-  ngOnInit() {
-    this.user = {
-      id: '1',
-      name: 'Jorge',
-      lastname: 'Arredondo',
-      code: '30158403'
-    }
+  ngOnInit(): void {
+    this._initValues();
   }
 
-  async openPopover($event) {
+  async openMenu($event) {
 
+  }
+
+  routeTo(path:string): void {
+    this._generalServ.route(path);
+  }
+
+  _initValues(): void {
+    this.headerSettings = {
+      title: 'Menú Principal',
+      hasSubtitle: false,
+      back: {
+        status: false
+      },
+      extra: {
+        status: true,
+        icon: 'ellipsis-vertical'
+      }
+    }
+    this._headerHelperServ.set(this.headerSettings);
   }
 
 }

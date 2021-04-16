@@ -23,8 +23,6 @@ export class SigninPage implements OnInit {
 
   validations = VALIDATIONS;
 
- 
-
   constructor(
     private readonly _frmProvider: FormProvider, 
     private readonly _generalServ: GeneralService
@@ -38,13 +36,8 @@ export class SigninPage implements OnInit {
     if(this.loginForm.invalid){
       this.loginForm.markAllAsTouched();
     } else {
-      this.toRoute('/main/home');
-      this._generalServ.showToastSuccess('Hola, Jorge', 'Bienvenido');
+      this._generalServ.route('/main/home');
     }
-  }
-
-  toRoute(path: string): void {
-    this._generalServ.route(path);
   }
 
   _initValues(): void {

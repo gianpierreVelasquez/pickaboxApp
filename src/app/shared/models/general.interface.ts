@@ -17,7 +17,7 @@ export interface HeaderExtra {
 export interface BackProps {
     text?: string;
     icon?: string;
-    href?: string;
+    routeBack?: string;
     status: boolean;
 }
 
@@ -25,4 +25,13 @@ export interface OptionProps {
     id: string;
     src: string;
     title: string;
+    route: string;
+}
+
+export interface ITab {
+    label: string;
+    value: string;
+    span?: string;
+    icon?: string;
+    layout: string;
 }

@@ -1,17 +1,35 @@
 import { Injectable } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
+import { BehaviorSubject, timer } from 'rxjs';
+import { IUser } from 'src/app/shared/models/user.interface';
+import { defaultUser } from 'src/app/shared/utils/default-props';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GeneralService {
 
+  public user: BehaviorSubject<IUser> = new BehaviorSubject(defaultUser);
+
   constructor(
     private readonly _router: Router,
     private readonly _toastCtrl: ToastController,
     private readonly _loadingCtrl: LoadingController
   ) { }
+
+  // global variables
+  // user
+  public getUser(): BehaviorSubject<IUser> {
+    return this.user
+  }
+
+  public setUser(user: IUser): void {
+    const $timer = timer(0).subscribe(() => {
+      this.user.next(user);
+      $timer.unsubscribe();
+    })
+  } 
 
   // router
   public route(path:string): void {

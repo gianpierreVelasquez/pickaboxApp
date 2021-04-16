@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar class="title" [color]="header.barColor || 'primary' ">
     <ion-buttons *ngIf="header.back.status" slot="start">
-      <ion-button (click)="back()"> {{header.extra.text}}
-        <ion-icon *ngIf="header.back.icon" [icon]="header.extra.icon"></ion-icon>
+      <ion-button (click)="back(header.back.routeBack)"> {{header.back.text}}
+        <ion-icon *ngIf="header.back.icon" [icon]="header.back.icon"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>{{ header.title }}</ion-title>

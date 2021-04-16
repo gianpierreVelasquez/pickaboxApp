@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, timer } from 'rxjs';
 import { IHeader } from 'src/app/shared/models/general.interface';
+import { defaultHeader } from 'src/app/shared/utils/default-props';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeaderHelperService {
 
-  public headerConf: BehaviorSubject<IHeader>;
+  public headerConf: BehaviorSubject<IHeader> = new BehaviorSubject<IHeader>(defaultHeader);
 
   constructor() { }
 

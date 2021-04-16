@@ -1,3 +1,20 @@
+// custom item
+.g-item {
+    &--transparent {
+        --background: transparent;
+        --box-shadow: none;
+    }
+
+    &--no-padding {
+        --padding-start: 0px !important;
+        --padding-end: 0px !important;
+    }
+
+    &--no-hihglight {
+        --highlight-height: 0;
+    }
+}
+
 // custom input
 .g-input {
     --padding-start: 15px !important;
@@ -23,6 +40,16 @@
     &--br-50 {
         border-radius: 50% !important;
     }
+
+    &--sx-padding {
+        --padding-start: 5px !important;
+        --padding-end: 5px !important;
+    }
+}
+
+// custom select
+.g-select {
+    min-width: 100% !important;
 }
 
 // custom button
@@ -47,11 +74,19 @@
     }
 }
 
-// custom item
-.g-item {
-    &--transparent {
-        --background: transparent;
-        --box-shadow: none;
+// segment
+.g-segment {
+    &--custom {
+        --background: #bbbbbb;
+    }
+}
+
+.g-toolbar {
+    &--no-padding {
+        --padding-start: 0px !important;
+        --padding-end: 0px !important;
+        --padding-top: 0px !important;
+        --padding-bottom: 0px !important;
     }
 }
 

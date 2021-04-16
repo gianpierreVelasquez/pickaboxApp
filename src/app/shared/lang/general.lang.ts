@@ -8,7 +8,9 @@ export const GeneralLang = {
     Labels: {
         Email: "Correo Electrónico :",
         Password: "Contraseña :",
-        User: "Usuario :"
+        User: "Usuario :",
+        OrderItem: "Pedido :",
+        DeliverItem: "Entrega :"
     },
     Text: {
         ForgotPass: "Ingresa tu correo electrónico y te enviaremos un enlace para que puedas recueperar tu contraseña."
