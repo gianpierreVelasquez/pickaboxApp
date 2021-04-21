@@ -405,6 +405,23 @@ $items: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 19, 20, 21, 30;
         margin-top: 1rem * $item !important;
     }
 
+    .h-my--#{$item} {
+        margin-bottom: 1rem * $item !important;
+        margin-top: 1rem * $item !important;
+    }
+    
+    .h-mx--#{$item} {
+        margin-left: 1rem * $item !important;
+        margin-right: 1rem * $item !important;
+    }
+
+    .h-ma--#{$item} {
+        margin-left: 1rem * $item !important;
+        margin-right: 1rem * $item !important;
+        margin-bottom: 1rem * $item !important;
+        margin-top: 1rem * $item !important;
+    }
+
     .h-p--#{$item} {
         padding: 1rem * $item !important;
     }
@@ -425,19 +442,21 @@ $items: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 19, 20, 21, 30;
         padding-top: 1rem * $item !important;
     }
 
-    .h-pv--#{$item} {
+    .h-py--#{$item} {
         padding-bottom: 1rem * $item !important;
         padding-top: 1rem * $item !important;
     }
 
-    .h-ph--#{$item} {
+    .h-px--#{$item} {
         padding-left: 1rem * $item !important;
         padding-right: 1rem * $item !important;
     }
 
-    .h-mv--#{$item} {
-        margin-bottom: 1rem * $item !important;
-        margin-top: 1rem * $item !important;
+    .h-pa--#{$item} {
+        padding-left: 1rem * $item !important;
+        padding-right: 1rem * $item !important;
+        padding-bottom: 1rem * $item !important;
+        padding-top: 1rem * $item !important;
     }
 }
 

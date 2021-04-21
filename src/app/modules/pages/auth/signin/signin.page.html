@@ -11,7 +11,7 @@
 
       <img class="logo" src="{{logo}}" width="55%">
 
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
         <ion-row>
           <ion-col size="12">
             <ion-item class="g-item--transparent" lines="none">
@@ -19,15 +19,15 @@
               <ion-input class="g-input g-input--b-blue g-input--br-25" color="dark" type="email" autocomplete="off"
                 formControlName="email">
               </ion-input>
+              <div class="error-container">
+                <ng-container *ngFor="let validation of validations.email">
+                  <div class="error-message animated fadeInUp" *ngIf="loginForm.get('email').hasError(validation.type) &&
+                         (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
             </ion-item>
-            <div class="error-container">
-              <ng-container *ngFor="let validation of validations.email">
-                <div class="error-message animated fadeInUp" *ngIf="loginForm.get('email').hasError(validation.type) &&
-                       (loginForm.get('email').dirty || loginForm.get('email').touched)">
-                  <span>{{ validation.message }}</span>
-                </div>
-              </ng-container>
-            </div>
           </ion-col>
 
           <ion-col size="12">
@@ -36,15 +36,15 @@
               <ion-input class="g-input g-input--b-blue g-input--br-25" color="dark" type="password" autocomplete="off"
                 formControlName="password">
               </ion-input>
+              <div class="error-container">
+                <ng-container *ngFor="let validation of validations.password">
+                  <div class="error-message animated fadeInUp" *ngIf="loginForm.get('password').hasError(validation.type) &&
+                         (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
             </ion-item>
-            <div class="error-container">
-              <ng-container *ngFor="let validation of validations.password">
-                <div class="error-message animated fadeInUp" *ngIf="loginForm.get('password').hasError(validation.type) &&
-                       (loginForm.get('password').dirty || loginForm.get('password').touched)">
-                  <span>{{ validation.message }}</span>
-                </div>
-              </ng-container>
-            </div>
           </ion-col>
         </ion-row>
 
@@ -57,7 +57,7 @@
         </ion-row>
       </form>
 
-      <ion-row class="ion-justify-content-center bottom-link">
+      <ion-row class="ion-justify-content-center">
         <ion-button color="secondary" fill="clear" (click)="toRoute('/auth/reset-password')">
           {{btnForgotPass}}
         </ion-button>

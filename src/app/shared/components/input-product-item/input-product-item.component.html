@@ -1,0 +1,23 @@
+<form [formGroup]="responseForm" (ngSubmit)="setReponse(responseForm.value)">
+  <ion-row>
+    <ion-col size="10">
+      <ion-item class="g-item--transparent g-item--no-padding g-item--no-hihglight" lines="none">
+        <ion-input class="g-input g-input--b-strong-gray" type="number" formControlName="response" autocomplete="off"></ion-input>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.response">
+          <div class="error-message" *ngIf="responseForm.get('response').hasError(validation.type) &&
+                        (responseForm.get('response').dirty || responseForm.get('response').touched)">
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+    </ion-col>
+    <ion-col size="2" class="ion-align-self-center">
+      <ion-button fill="clear" class="g-button--no-padding" type="submit">
+        <ion-icon slot="icon-only" color="success" name="checkmark-circle"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+</form>

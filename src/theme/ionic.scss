@@ -16,6 +16,7 @@
 }
 
 // custom input
+$items: 0, 1, 2, 3;
 .g-input {
     --padding-start: 15px !important;
     --padding-end: 15px !important;
@@ -45,6 +46,10 @@
         --padding-start: 5px !important;
         --padding-end: 5px !important;
     }
+
+    &--b-strong-gray {
+        border: 1px solid #aeaeae !important;
+    }
 }
 
 // custom select
@@ -72,6 +77,16 @@
     &--br-50 {
         --border-radius: 50%;
     }
+
+    &--no-padding {
+        --padding-start: 0px !important;
+        --padding-end: 0px !important;
+
+        .button-native {
+            padding-inline-start: 0px !important;
+            padding-inline-end: 0px !important;
+        }
+    }
 }
 
 // segment
@@ -90,14 +105,31 @@
     }
 }
 
+.g-loader {
+    --background: transparent !important;
+    --spinner-color: #f39c12 !important;
+
+    ion-spinner {
+        width: 5em;
+        height: 5em;
+    }
+}
+
+.g-toast {
+    color: white !important;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
 // input error validation
 .error-container {
+    margin-bottom: 1rem;
+    
     .error-message {
-        margin: 1px 8%;
         position: absolute;
         display: flex;
         align-items: center;
         color: red;
-        font-size: 11px;
+        font-size: 12px;
     }
 }

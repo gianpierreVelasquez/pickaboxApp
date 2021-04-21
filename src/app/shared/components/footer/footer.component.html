@@ -1,8 +1,13 @@
 <ion-footer class="ion-no-border">
   <ng-content></ng-content>
   <ion-toolbar color="primary" size="small">
-      <ion-row class="h-pl--2">
-          <p class="h-my--0 h-fs--1-2"> {{ userlbl }} {{user.userFullDescription}}</p>
+      <ion-row>
+        <ion-col [size]="secondCol ? 7 : 12" class="ion-text-start">
+          <p class="h-pl--1 h-my--0 h-fs--1-3"> {{firstSpeech}}</p>
+        </ion-col>
+        <ion-col *ngIf="secondCol" size="5" class="ion-text-end">
+          <p class="h-pr--1 h-my--0 h-fs--1-3"> {{secondSpeech}}</p>
+        </ion-col>
       </ion-row>
   </ion-toolbar>
 </ion-footer>

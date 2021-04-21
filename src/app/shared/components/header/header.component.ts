@@ -1,41 +1,29 @@
 import { Location } from '@angular/common';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { GeneralService } from 'src/app/core/services/general.service';
-import { HeaderHelperService } from 'src/app/core/services/header-helper.service';
 import { IHeader } from '../../models/general.interface';
-import { defaultHeader } from '../../utils/default-props';
 
 @Component({
-  selector: 'm-header',
+  selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
 
-  header: IHeader = defaultHeader;
-  headerSub: Subscription;
+  @Input() headerConf: IHeader;
+  @Input() disableBack: boolean = false;
+  @Input() disableExtra: boolean = false;
   @Output() extraBtnAction: EventEmitter<void> = new EventEmitter();
 
   constructor(
     private readonly _location: Location,
-    private readonly _generalServ: GeneralService,
-    private readonly _headerHelperServ: HeaderHelperService
+    private readonly _generalServ: GeneralService
   ) { }
 
-  ngOnInit() {
-    this._initValues()
-  }
+  ngOnInit(): void { }
 
   action($event): void {
     this.extraBtnAction.emit($event)
-  }
-
-  _initValues(): void {
-    this.headerSub = this._headerHelperServ.get().subscribe((res: IHeader) => {
-    this.header = res },
-    (err) => { console.error(err) },
-    () => this.headerSub.unsubscribe());
   }
 
   back(routeBack?:string): void {

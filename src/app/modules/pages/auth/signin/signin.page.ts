@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
+import { AuthenticationService } from 'src/app/core/auth/authentication.service';
 import { FormProvider } from 'src/app/core/services/form-provider.service';
 import { GeneralService } from 'src/app/core/services/general.service';
 import { GeneralLang } from 'src/app/shared/lang/general.lang';
@@ -24,19 +25,19 @@ export class SigninPage implements OnInit {
   validations = VALIDATIONS;
 
   constructor(
-    private readonly _frmProvider: FormProvider, 
-    private readonly _generalServ: GeneralService
+    private readonly _frmProvider: FormProvider,
+    private readonly _authServ: AuthenticationService
   ) { }
 
   ngOnInit(): void {
     this._initValues();
   }
 
-  login(): void {
+  login(value): void {
     if(this.loginForm.invalid){
       this.loginForm.markAllAsTouched();
     } else {
-      this._generalServ.route('/main/home');
+      this._authServ.authVerification(value, this.loginForm);
     }
   }
 

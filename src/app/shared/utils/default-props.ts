@@ -14,27 +14,38 @@ export const defaultHeader: IHeader = {
     }
 }
 
-export const defaultUser: IUser = {
-    id: '0',
-    code: '000000',
-    name: 'USUARIO', 
-    lastname: 'PRUEBA'
-}
-
 export const prepareTabs: Array<ITab> = [
     {
         label: 'DISPONIBLE',
-        value: 'disponible',
+        value: '1',
         layout: 'icon-bottom'
     },
     {
         label: 'EN PREPARACIÓN',
-        value: 'preparacion',
+        value: '2',
         layout: 'icon-bottom'
     },
     {
         label: 'PREPARADO',
-        value: 'preparado',
+        value: '3',
+        layout: 'icon-bottom'
+    }
+]
+
+export const verifyTabs: Array<ITab> = [
+    {
+        label: 'PREPARADO',
+        value: '3',
+        layout: 'icon-bottom'
+    },
+    {
+        label: 'EN VERIFICACIÓN',
+        value: '4',
+        layout: 'icon-bottom'
+    },
+    {
+        label: 'VERIFICADO',
+        value: '5',
         layout: 'icon-bottom'
     }
 ]

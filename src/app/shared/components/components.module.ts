@@ -4,20 +4,26 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from "./footer/footer.component";
-import { PrepareItemComponent } from "./prepare-item/prepare-item.component";
+import { OrderItemComponent } from "./order-item/order-item.component";
+import { OrderProductItemComponent } from "./order-product-item/order-product-item.component";
+import { InputProductItemComponent } from "./input-product-item/input-product-item.component";
 
 @NgModule({
     declarations: [
         HeaderComponent,
         FooterComponent,
-        PrepareItemComponent
+        OrderItemComponent,
+        OrderProductItemComponent,
+        InputProductItemComponent
     ],
     exports:[
         FormsModule,
         ReactiveFormsModule,
         HeaderComponent,
         FooterComponent,
-        PrepareItemComponent
+        OrderItemComponent,
+        OrderProductItemComponent,
+        InputProductItemComponent
     ],
     imports: [
         CommonModule,

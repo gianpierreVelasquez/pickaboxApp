@@ -1,23 +1,24 @@
 <ion-header>
-  <ion-toolbar class="title" [color]="header.barColor || 'primary' ">
-    <ion-buttons *ngIf="header.back.status" slot="start">
-      <ion-button (click)="back(header.back.routeBack)"> {{header.back.text}}
-        <ion-icon *ngIf="header.back.icon" [icon]="header.back.icon"></ion-icon>
+  <ion-toolbar class="title" [color]="headerConf.barColor || 'primary' ">
+    <ion-buttons *ngIf="headerConf.back.status" slot="start">
+      <ion-button (click)="back(headerConf.back.routeBack)" [disabled]="disableBack"> {{headerConf.back.text}}
+        <ion-icon *ngIf="headerConf.back.icon" [icon]="headerConf.back.icon"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>{{ header.title }}</ion-title>
-    <ion-buttons *ngIf="header.extra.status" slot="end">
-      <ion-button (click)="action($event)"> {{header.extra.text}}
-        <ion-icon *ngIf="header.extra.icon" [icon]="header.extra.icon"></ion-icon>
+    <ion-title>{{ headerConf.title }}</ion-title>
+    <ion-buttons *ngIf="headerConf.extra.status" slot="end">
+      <ion-button (click)="action($event)" [disabled]="disableExtra"> {{headerConf.extra.text}}
+        <ion-icon *ngIf="headerConf.extra.icon" slot="end" [icon]="headerConf.extra.icon"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar *ngIf="header.hasSubtitle" class="subtitle" [color]="header.barColor || 'primary'">
+  <ion-toolbar *ngIf="headerConf.hasSubtitle" class="subtitle" [color]="headerConf.barColor || 'primary'">
     <ion-label>
-      <h1> {{ header.subtitle }} </h1>
+      <h1> {{ headerConf.subtitle }} </h1>
     </ion-label>
-    <ion-label *ngIf="header.subtext">
-      <p> {{ header.subtext }} </p>
+    <ion-label *ngIf="headerConf.subtext">
+      <p> {{ headerConf.subtext }} </p>
     </ion-label>
   </ion-toolbar>
+  <ng-content></ng-content>
 </ion-header>

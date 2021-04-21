@@ -1,0 +1,63 @@
+<div *ngIf="productList.length > 0">
+  <form [formGroup]="productForm" (ngSubmit)="checkOrder(productForm.value)">
+    <ion-item class="g-item--no-padding h-mt--1" *ngFor="let product of p.controls; let i = index;"
+      [detail]="showDetail">
+      <div [formGroup]="product">
+        <ion-row>
+          <ion-col size="12">
+            <ion-row>
+              <ion-col class="ion-no-padding" size="12">
+                <p class="ion-no-margin ion-text-nowrap h-pl--0-5 h-fs--1-4 h-font--bold h-c--primary">
+                  <span>
+                    <ion-icon name="file-tray"></ion-icon>
+                  </span>
+                  {{ product.get("itemName").value }}
+                </p>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size="12" class="ion-align-self-center">
+            <p class="ion-no-margin h-pl--0-5 h-fs--1-4 h-font-normal h-c--secondary">
+              <span>
+                <ion-icon name="barcode"></ion-icon>
+              </span>
+              {{ product.get("itemId").value }}
+            </p>
+          </ion-col>
+          <ion-col size="12">
+            <ion-row>
+              <ion-col size="3" class="ion-align-self-center">
+                <p class="ion-no-margin h-pl--0-5 h-fs--1-3 h-font-normal h-c--secondary">
+                  <span>
+                    <ion-icon name="cart"></ion-icon>
+                  </span>
+                  {{ product.get("itemMeasureUnit").value }}
+                </p>
+              </ion-col>
+              <ion-col size="3" class="ion-align-self-center">
+                <p class="ion-no-margin h-pl--0-5 h-fs--1-3 h-font-normal h-c--secondary">
+                  <span>
+                    <ion-icon name="clipboard"></ion-icon>
+                  </span>
+                  {{ product.get("itemQuantity").value }}
+                </p>
+              </ion-col>
+              <ion-col size="6">
+                <div formGroupName="itemResponse">
+                  <app-input-product-item [expectedQuantity]="product.controls.itemQuantity.value" [itemIndex]="i"
+                    (dataGetter)="getResponse($event, i)">
+                  </app-input-product-item>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-item>
+  </form>
+</div>
+
+<div *ngIf="productList.length === 0"
+  class="ion-text-center ion-align-items-center ion-text-uppercase h-pa--4 h-fs--1-3 h-c--gray">
+  <p>{{noItems}}</p>
+</div>

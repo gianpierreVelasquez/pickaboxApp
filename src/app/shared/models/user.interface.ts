@@ -1,6 +1,12 @@
 export interface IUser {
-    id: string;
-    name: string;
-    lastname: string;
-    code: string;
+    code: string
+    email: string
+    lastname: string
+    name: string
+    profile: string
+}
+
+export interface IUAuth {
+    email: string;
+    password: string;
 }

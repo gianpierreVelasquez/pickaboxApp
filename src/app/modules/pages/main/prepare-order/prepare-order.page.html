@@ -1,13 +1,15 @@
-<m-header></m-header>
-
-<ion-content class="ion-no-padding">
+<app-header [headerConf]="headerSettings">
 
     <form [formGroup]="prepareForm">
         <ion-row>
             <ion-col size="12">
                 <ion-item class="g-item--no-padding g-item--transparent">
-                    <ion-select class="g-select" placeholder="Seleccione una ruta" formControlName="route">
-                        <ion-select-option *ngFor="let n of [1,2,3,4,5,6]" [value]="n">n</ion-select-option>
+                    <ion-label>Rutas</ion-label>
+                    <ion-select class="g-select" okText="Seleccionar" cancelText="Cerrar"
+                        placeholder="Seleccione una ruta" formControlName="deliveryPersonId"
+                        (ionChange)="selectRoute( $event )">
+                        <ion-select-option *ngFor="let route of routes" [value]="route.deliveryPersonId">
+                            {{route.deliveryPersonId}}</ion-select-option>
                     </ion-select>
                 </ion-item>
             </ion-col>
@@ -17,7 +19,7 @@
             <ion-col size="12">
                 <ion-item class="g-item--transparent g-item--no-padding g-item--no-hihglight">
                     <span item-start>
-                        <ion-icon color="gray" name="search"></ion-icon>
+                        <ion-icon class="h-pl--1 h-fs--2" color="gray" name="search"></ion-icon>
                     </span>
                     <ion-input class="g-input--sx-padding" color="dark" type="text" autocomplete="off"
                         formControlName="searchText" placeholder="Buscar...">
@@ -27,18 +29,36 @@
         </ion-row>
     </form>
 
-    <m-prepare-item [orderList]="orders" [showDetail]="true">
-    </m-prepare-item>
+</app-header>
+
+<ion-content class="ion-no-padding">
+
+    <ion-refresher *ngIf="selectedRoute" slot="fixed" (ionRefresh)="getOrders(selectedRoute, selectedStatus, $event)">
+        <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
+            refreshingSpinner="decrecent" [refreshingText]="refreshOrder">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <div *ngIf="!selectedRoute"
+        class="ion-text-center ion-align-items-center ion-text-uppercase h-pa--4 h-fs--1-3 h-c--gray">
+        <p>{{missingParameter}}</p>
+    </div>
+
+    <div *ngIf="selectedRoute">
+        <app-order-item [orderList]="orders" [showDetail]="true">
+        </app-order-item> 
+    </div>
+
 
 </ion-content>
-<m-footer>
-    <ion-toolbar class="g-toolbar--no-padding">
-        <ion-segment class="g-segment--custom" color="secondary" mode="md" (ionChange)="segmentChanged( $event )">
+<app-footer [firstSpeech]="activeUser">
+    <ion-toolbar mode="md" class="g-toolbar--no-padding" color="secondary">
+        <ion-segment class="g-segment--custom" mode="ios" (ionChange)="selectStatus( $event )" value="1">
             <ion-segment-button *ngFor="let tab of tabList " [value]="tab.value" [layout]="tab.layout">
-                <ion-label>{{tab.label}}</ion-label>
-                <span *ngIf="tab.span">{{tab.span}}</span>
+                <p class="h-fs--1">{{tab.label}}</p>
+                <span *ngIf="tab.span">{{tab.span}} 2</span>
                 <ion-icon *ngIf="tab.icon" [name]="tab.icon"></ion-icon>
             </ion-segment-button>
         </ion-segment>
     </ion-toolbar>
-</m-footer>
+</app-footer>

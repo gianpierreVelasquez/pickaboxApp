@@ -1,21 +1,26 @@
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
-import { LoadingController, ToastController } from '@ionic/angular';
-import { BehaviorSubject, timer } from 'rxjs';
+import { LoadingController, PopoverController, ToastController } from '@ionic/angular';
+import { BehaviorSubject } from 'rxjs';
+import { SPINNER } from 'src/app/shared/enum/spinner.enum';
+import { ILoader } from 'src/app/shared/models/general.interface';
 import { IUser } from 'src/app/shared/models/user.interface';
-import { defaultUser } from 'src/app/shared/utils/default-props';
+import { _mapUser } from 'src/app/shared/utils/general.util';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GeneralService {
 
-  public user: BehaviorSubject<IUser> = new BehaviorSubject(defaultUser);
+  public user: BehaviorSubject<IUser> = new BehaviorSubject({} as IUser);
+  public actualUser: any;
 
   constructor(
     private readonly _router: Router,
     private readonly _toastCtrl: ToastController,
-    private readonly _loadingCtrl: LoadingController
+    private readonly _loadingCtrl: LoadingController,
+    private readonly _popoverCtrl: PopoverController
   ) { }
 
   // global variables
@@ -25,18 +30,17 @@ export class GeneralService {
   }
 
   public setUser(user: IUser): void {
-    const $timer = timer(0).subscribe(() => {
+    setTimeout(() => {
       this.user.next(user);
-      $timer.unsubscribe();
-    })
-  } 
+    }, 100);
+  }
 
   // router
-  public route(path:string): void {
+  public route(path: string): void {
     this._router.navigate([path]);
   }
 
-  public routeAndParams(path:string, params:any): void {
+  public routeAndParams(path: string, params: any): void {
     let extras: NavigationExtras = {
       state: {
         params: params
@@ -47,13 +51,14 @@ export class GeneralService {
   }
 
   // loading
-  async showLoading(spinner: any, message?:string) {
-    let loader = await this._loadingCtrl.create({
-      message: message,
-      spinner: spinner
+  async showLoading(loader?: ILoader) {
+    let loading = await this._loadingCtrl.create({
+      spinner: loader.spinner ? loader.spinner : SPINNER.CRESCENT,
+      cssClass: 'g-loader',
+      mode: 'ios'
     });
 
-    await loader.present();
+    await loading.present();
   }
 
   async stopLoading() {
@@ -61,55 +66,84 @@ export class GeneralService {
   }
 
   // toast
-  async showToastInfo(message?:string, header?:string) {
-    const toast = await this._toastCtrl.create(
-      {
-        header: header,
-        message: message,
-        duration: 3000,
-        position: 'bottom'
-      }
-    );
-    toast.present();
-  }
-
-  async showToastSuccess(message?:string, header?:string) {
+  async showToastInfo(message?: string, header?: string) {
     const toast = await this._toastCtrl.create(
       {
         header: header,
         message: message,
         duration: 3000,
         position: 'bottom',
-        color: "primary"
+        cssClass: "g-toast"
       }
     );
-    toast.present();
+    await toast.present();
   }
 
-  async showToastWarning(message?:string, header?:string) {
+  async showToastSuccess(message?: string, header?: string) {
     const toast = await this._toastCtrl.create(
       {
         header: header,
         message: message,
         duration: 3000,
         position: 'bottom',
-        color: "warning"
+        color: "success",
+        cssClass: "g-toast"
       }
     );
-    toast.present();
+    await toast.present();
   }
 
-  async showToastError(message?:string, header?:string) {
+  async showToastWarning(message?: string, header?: string) {
     const toast = await this._toastCtrl.create(
       {
         header: header,
         message: message,
         duration: 3000,
         position: 'bottom',
-        color: "danger"
+        color: "warning",
+        cssClass: "g-toast"
       }
     );
-    toast.present();
+    await toast.present();
+  }
+
+  async showToastError(message?: string, header?: string) {
+    const toast = await this._toastCtrl.create(
+      {
+        header: header,
+        message: message,
+        duration: 3000,
+        position: 'bottom',
+        color: "danger",
+        cssClass: "g-toast"
+      }
+    );
+    await toast.present();
+  }
+
+  // popover
+  async showPopover(event: any, component: Function, componentProps?: any) {
+    const popover = await this._popoverCtrl.create({
+      component: component,
+      componentProps: componentProps,
+      event: event,
+      backdropDismiss: true,
+      mode: 'ios'
+    });
+    await popover.present();
+  }
+
+  async closePopover() {
+    this._popoverCtrl.dismiss();
+  }
+
+  //FormChecker
+  disabledFields(group: FormGroup): void {
+    Object.keys(group.controls).forEach(key => {
+      if (group.controls[key].value != undefined && group.controls[key].value != "" && group.controls[key].invalid == false) {
+        group.controls[key].disable();
+      }
+    });
   }
 
 }

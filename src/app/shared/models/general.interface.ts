@@ -26,6 +26,7 @@ export interface OptionProps {
     src: string;
     title: string;
     route: string;
+    type: string;
 }
 
 export interface ITab {
@@ -34,4 +35,8 @@ export interface ITab {
     span?: string;
     icon?: string;
     layout: string;
+}
+
+export interface ILoader {
+    spinner?: any;
 }

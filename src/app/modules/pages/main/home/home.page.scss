@@ -1,0 +1,9 @@
+.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.enabled {
+    opacity: 1;
+    pointer-events: all !important;
+}
