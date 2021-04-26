@@ -16,7 +16,7 @@
 }
 
 // custom input
-$items: 0, 1, 2, 3;
+$widths: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100;
 .g-input {
     --padding-start: 15px !important;
     --padding-end: 15px !important;
@@ -50,11 +50,33 @@ $items: 0, 1, 2, 3;
     &--b-strong-gray {
         border: 1px solid #aeaeae !important;
     }
+
+    &--disabled {
+        border-bottom: 1px solid #aeaeae !important;
+        pointer-events: none;
+    }
+
+    @each $width in $widths {
+        &--w-#{$width} {
+            width: 1% * $width !important;
+        }
+    }
 }
 
 // custom select
 .g-select {
     min-width: 100% !important;
+    --padding-start: 10px;
+
+    &--c-primary {
+        border: 1px solid #356595;
+        border-radius: 10px;
+    }
+
+    &--c-secondary {
+        border: 1px solid #f39c12;
+        border-radius: 10px;
+    }
 }
 
 // custom button
@@ -96,6 +118,7 @@ $items: 0, 1, 2, 3;
     }
 }
 
+// toolbar
 .g-toolbar {
     &--no-padding {
         --padding-start: 0px !important;
@@ -105,6 +128,7 @@ $items: 0, 1, 2, 3;
     }
 }
 
+// spinner
 .g-loader {
     --background: transparent !important;
     --spinner-color: #f39c12 !important;
@@ -115,16 +139,36 @@ $items: 0, 1, 2, 3;
     }
 }
 
+// toast
 .g-toast {
     color: white !important;
     font-size: 1.4em;
     font-weight: 600;
 }
 
+// modal
+.g-modal {
+    &--bottom {
+        --height: 70%;
+        align-items: flex-end;
+        bottom: 44px;
+    }
+}
+
+// card
+.g-card {
+    min-height: 250px;
+
+    &--permanent {
+        max-height: 250px;
+        overflow-y: auto;
+    }
+}
+
 // input error validation
 .error-container {
     margin-bottom: 1rem;
-    
+
     .error-message {
         position: absolute;
         display: flex;

@@ -81,7 +81,7 @@ export class CheckOrderPage implements OnInit {
           ev.target.complete();
         })
     } else {
-      this._generalServ.showToastWarning(GeneralLang.Messages.MustSelectRoute);
+      this._generalServ.showToastWarning(GeneralLang.Title.Warning, GeneralLang.Messages.MustSelectRoute);
     }
   }
 
@@ -95,7 +95,7 @@ export class CheckOrderPage implements OnInit {
     if(this.selectedRoute){
       this.getOrders(this.selectedRoute, this.selectedStatus, null);
     } else {
-      this._generalServ.showToastWarning(GeneralLang.Messages.MustSelectRoute);
+      this._generalServ.showToastWarning(GeneralLang.Title.Warning, GeneralLang.Messages.MustSelectRoute);
     }
   }
 
@@ -106,6 +106,7 @@ export class CheckOrderPage implements OnInit {
       hasSubtitle: false,
       back: {
         status: true,
+        back: true,
         icon: 'home'
       },
       extra: {

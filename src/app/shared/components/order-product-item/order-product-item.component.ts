@@ -14,16 +14,17 @@ export class OrderProductItemComponent implements OnInit {
   productForm: FormGroup;
 
   @Input() productList: IOrderDetail[];
-  @Output() getFormStatus: EventEmitter<void> = new EventEmitter();
+  @Output() getFormStatus: EventEmitter<any> = new EventEmitter<any>();
 
   checker: boolean = false;
   colorChecker: string = "close-circle";
   iconChecker: string = "danger";
   expectedQuantity: number = 0;
+  detailOrderArr: any[] = [];
 
   constructor(
     private readonly _frmProvider: FormProvider,
-    private _formBuilder: FormBuilder
+    private readonly _formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +39,7 @@ export class OrderProductItemComponent implements OnInit {
   }
 
   get c() { return this.productForm.controls; }
-  get p() { return this.c.products as FormArray; }
+  get p() { return this.c.detail as FormArray; }
 
   addProducts() {
     if (this.p.length < this.productList.length) {
@@ -48,26 +49,25 @@ export class OrderProductItemComponent implements OnInit {
           itemId: [{value: this.productList[i].materialId, disabled: true}],
           itemMeasureUnit: [{value: this.productList[i].measureUnit, disabled: true}],
           itemQuantity: [{value: this.productList[i].quantity, disabled: true}],
-          itemResponse: ['', [Validators.required]]
+          details: ['', [Validators.required]]
         }));
       }
     }
   }
 
-  checkOrder(values){
+  checkOrder(values:any){
     if (this.productForm.invalid) {
       this.productForm.markAllAsTouched();
     } else {
-      this.getFormStatus.emit(values);
+      let arr: any[] = values.detail
+      arr.forEach(e => this.detailOrderArr.push(e.details));
+      this.getFormStatus.emit(this.detailOrderArr);
     }
   }
 
   getResponse(ev:any, i): void {
-    console.log(ev);
-    console.log(this.p.controls[i]['controls']);
-    
     setTimeout(() => {
-      this.p.controls[i]['controls'].itemResponse.setValue(ev);
+      this.p.controls[i]['controls'].details.setValue(ev);
     });
   }
 

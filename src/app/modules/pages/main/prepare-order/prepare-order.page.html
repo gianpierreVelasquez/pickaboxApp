@@ -5,7 +5,7 @@
             <ion-col size="12">
                 <ion-item class="g-item--no-padding g-item--transparent">
                     <ion-label>Rutas</ion-label>
-                    <ion-select class="g-select" okText="Seleccionar" cancelText="Cerrar"
+                    <ion-select class="g-select" [cancelText]="lang.Buttons.Cancel" [okText]="lang.Buttons.Confirm"
                         placeholder="Seleccione una ruta" formControlName="deliveryPersonId"
                         (ionChange)="selectRoute( $event )">
                         <ion-select-option *ngFor="let route of routes" [value]="route.deliveryPersonId">

@@ -1,8 +1,8 @@
 <div *ngIf="productList.length > 0">
   <form [formGroup]="productForm" (ngSubmit)="checkOrder(productForm.value)">
-    <ion-item class="g-item--no-padding h-mt--1" *ngFor="let product of p.controls; let i = index;"
+    <ion-item class="g-item--no-padding h-mt--1" *ngFor="let detail of p.controls; let i = index;"
       [detail]="showDetail">
-      <div [formGroup]="product">
+      <div [formGroup]="detail">
         <ion-row>
           <ion-col size="12">
             <ion-row>
@@ -11,7 +11,7 @@
                   <span>
                     <ion-icon name="file-tray"></ion-icon>
                   </span>
-                  {{ product.get("itemName").value }}
+                  {{ detail.get("itemName").value }}
                 </p>
               </ion-col>
             </ion-row>
@@ -21,7 +21,7 @@
               <span>
                 <ion-icon name="barcode"></ion-icon>
               </span>
-              {{ product.get("itemId").value }}
+              {{ detail.get("itemId").value }}
             </p>
           </ion-col>
           <ion-col size="12">
@@ -31,7 +31,7 @@
                   <span>
                     <ion-icon name="cart"></ion-icon>
                   </span>
-                  {{ product.get("itemMeasureUnit").value }}
+                  {{ detail.get("itemMeasureUnit").value }}
                 </p>
               </ion-col>
               <ion-col size="3" class="ion-align-self-center">
@@ -39,12 +39,12 @@
                   <span>
                     <ion-icon name="clipboard"></ion-icon>
                   </span>
-                  {{ product.get("itemQuantity").value }}
+                  {{ detail.get("itemQuantity").value }}
                 </p>
               </ion-col>
               <ion-col size="6">
-                <div formGroupName="itemResponse">
-                  <app-input-product-item [expectedQuantity]="product.controls.itemQuantity.value" [itemIndex]="i"
+                <div formGroupName="details">
+                  <app-input-product-item [expectedQuantity]="detail.controls.itemQuantity.value" [itemIndex]="i"
                     (dataGetter)="getResponse($event, i)">
                   </app-input-product-item>
                 </div>

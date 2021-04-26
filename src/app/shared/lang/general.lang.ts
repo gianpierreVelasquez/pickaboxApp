@@ -3,7 +3,12 @@ export const GeneralLang = {
         Signin: "Ingresar",
         ForgotPass: "Recuperar contraseña",
         Signup: "Registrarme",
-        RecoverPass: "Enviar"
+        RecoverPass: "Enviar",
+        Confirm: "Confirmar",
+        Cancel: "Cancelar",
+        Understood: "Entendido",
+        FinishPreparation: "Finalizar preparación",
+        MakeForm: "Armar formulario"
     },
     Labels: {
         Email: "Correo Electrónico: ",
@@ -12,7 +17,12 @@ export const GeneralLang = {
         OrderItem: "Pedido: ",
         DeliverItem: "Entrega: ",
         Products: "Productos: ",
-        Deliver: "Entrega: "
+        Deliver: "Entrega: ",
+        Packages: "Bultos: ",
+        Route: 'Ruta: ',
+        Center: 'Centro: ',
+        Maker: 'Preparador: ',
+        Delivery: 'Entrega: '
     },
     Text: {
         ForgotPass: "Ingresa tu correo electrónico y te enviaremos un enlace para que puedas recueperar tu contraseña.",
@@ -21,9 +31,20 @@ export const GeneralLang = {
         RefreshOrders: "Actualizando ordenes."
     },
     Title: {
-        ForgotPass: "¿Olvidaste tu contraseña?"
+        ForgotPass: "¿Olvidaste tu contraseña?",
+        Packages: "Empaques",
+        Important: "Importante",
+        Warning: "Advertencia",
+        PackageForm: "Formulario de Paquetes",
+        QR: "Etiquetas QR"
     },
     Messages: {
-        MustSelectRoute: "Debes seleccionar una ruta."
+        MustSelectRoute: "Debes seleccionar una ruta.",
+        ExpectedQuantity: "Debe ingresar la cantidad requerida.",
+        LessThanExpectedQuantity: "La cantidad registrada es diferente a la solicitada.",
+        CorrectQuantity: "Cantidad ingresada correctamente.",
+        PackageFormMessage: "Aqui podras agregar los tipos de paquetes que necesites.",
+        CantSaveImage: 'No se pudo guardar la imagen.',
+        MakeASelection: 'Debe seleccionar almenos un tipo de empaque para continuar.'
     }
 }

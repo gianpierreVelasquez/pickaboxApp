@@ -2,19 +2,21 @@
   <ion-row>
     <ion-col size="10">
       <ion-item class="g-item--transparent g-item--no-padding g-item--no-hihglight" lines="none">
-        <ion-input class="g-input g-input--b-strong-gray" type="number" formControlName="response" autocomplete="off"></ion-input>
+        <ion-input class="g-input g-input--b-strong-gray ion-text-end" type="number" formControlName="pickedQ"
+          autocomplete="off"></ion-input>
+        <ion-icon slot="end" color="medium" name="information-circle" (click)="showInfo()"></ion-icon>
       </ion-item>
       <div class="error-container">
-        <ng-container *ngFor="let validation of validations.response">
-          <div class="error-message" *ngIf="responseForm.get('response').hasError(validation.type) &&
-                        (responseForm.get('response').dirty || responseForm.get('response').touched)">
+        <ng-container *ngFor="let validation of validations.pickedQ">
+          <div class="error-message" *ngIf="responseForm.get('pickedQ').hasError(validation.type) &&
+                        (responseForm.get('pickedQ').dirty || responseForm.get('pickedQ').touched)">
             <span>{{ validation.message }}</span>
           </div>
         </ng-container>
       </div>
     </ion-col>
     <ion-col size="2" class="ion-align-self-center">
-      <ion-button fill="clear" class="g-button--no-padding" type="submit">
+      <ion-button fill="clear" class="g-button--no-padding" type="submit" [disabled]="submitted">
         <ion-icon slot="icon-only" color="success" name="checkmark-circle"></ion-icon>
       </ion-button>
     </ion-col>

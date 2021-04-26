@@ -25,6 +25,7 @@ export interface IOrder {
 	customerAddress: string;
 	customerId: string;
 	preferredDate: string;
+	updateTime: number;
     detail: IOrderDetail[];
 }
 
@@ -42,4 +43,31 @@ export interface IOrderDetail {
 	deliveryDate: string;
 	pickedQ: number;
 	dc: string;
+}
+
+export interface IPackageManagement {
+	id: string;
+	labels: IPackageDetail[];
+}
+
+export interface IPackageDetail {
+	containerId: number;
+	containerText: string;
+	quantity: number;
+}
+
+export interface IPrepareManagment {
+	id: string;
+	detail: IPrepareDetail[];
+}
+
+export interface IPrepareDetail {
+	position: number;
+	pickedQ: number;
+	verifiedQ: number;
+	deliveredQ: number;
+}
+
+export interface IQr {
+	qrCode: string;
 }

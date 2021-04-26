@@ -6,3 +6,10 @@ export function _mapUser(obj:IUser): any {
     userFullDescription: `${obj.name} ${obj.lastname}`
   }
 }
+
+export function _mapPackageType(obj:any): any {
+  return {
+    name: `${obj}`,
+    quantity: 0
+  }
+}

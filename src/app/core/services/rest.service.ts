@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ServicePath } from 'src/app/shared/enum/service-path.enum';
-import { IOrder, IRoute } from 'src/app/shared/models/order.interface';
-import { ReqBodyUpdateOrderStatus, ReqQueryGetOrders } from 'src/app/shared/models/rest.model';
+import { IOrder, IQr, IRoute } from 'src/app/shared/models/order.interface';
+import { ReqBodyPostPackagesToGetQR, ReqBodyUpdateOrderDetail, ReqBodyUpdateOrderStatusInit, ReqBodyUpdateOrderStatusMiddle, ReqQueryGetOrders } from 'src/app/shared/models/rest.model';
 import { environment } from 'src/environments/environment';
 
 const URL = environment.BASE_API_URL;
@@ -28,7 +28,21 @@ export class RestService {
     return this._http.get<IOrder>(`${URL + this._rootEntity.ORDER}`, { params: { ...ReqQueryGetOrders.create(queryReq) } })
   }
 
-  public updateOrderStatus(bodyReq: ReqBodyUpdateOrderStatus): Observable<any> {
-    return this._http.post<IOrder>(`${URL + this._rootEntity.ORDER}/status`, ReqBodyUpdateOrderStatus.create(bodyReq), {})
+  // Request body para estados 1, 2, 4 (Disponible, En preparación, En verificación)
+  public updateOrderStatusInit(bodyReq: ReqBodyUpdateOrderStatusInit): Observable<any> {
+    return this._http.post<IOrder>(`${URL + this._rootEntity.ORDER}/status`, ReqBodyUpdateOrderStatusInit.create(bodyReq), {})
+  }
+
+  // Request body para estados 3, 5, 6 (Preparado, Verificado, Entregado)
+  public updateOrderStatusMiddle(bodyReq: ReqBodyUpdateOrderStatusMiddle): Observable<any> {
+    return this._http.post<IOrder>(`${URL + this._rootEntity.ORDER}/status`, ReqBodyUpdateOrderStatusMiddle.create(bodyReq), {})
+  }
+
+  public updateOrderDetail(bodyReq: ReqBodyUpdateOrderDetail): Observable<any> {
+    return this._http.post<IOrder>(`${URL + this._rootEntity.ORDER}/detail`, ReqBodyUpdateOrderDetail.create(bodyReq), {})
+  }
+
+  public postPackagesToGetQR(bodyReq: ReqBodyPostPackagesToGetQR): Observable<any> {
+    return this._http.post<IQr>(`${URL + this._rootEntity.ORDER}/label`, ReqBodyPostPackagesToGetQR.create(bodyReq), {})
   }
 }

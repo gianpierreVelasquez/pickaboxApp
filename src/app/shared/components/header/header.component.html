@@ -1,14 +1,17 @@
 <ion-header>
   <ion-toolbar class="title" [color]="headerConf.barColor || 'primary' ">
     <ion-buttons *ngIf="headerConf.back.status" slot="start">
-      <ion-button (click)="back(headerConf.back.routeBack)" [disabled]="disableBack"> {{headerConf.back.text}}
+      <ion-button *ngIf="headerConf.back.back" (click)="back(headerConf.back.routeBack)" [disabled]="disableBack"> {{headerConf.back.text}}
+        <ion-icon *ngIf="headerConf.back.icon" [icon]="headerConf.back.icon"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="headerConf.back.action" (click)="backAction($event)" [disabled]="disableBack"> {{headerConf.back.text}}
         <ion-icon *ngIf="headerConf.back.icon" [icon]="headerConf.back.icon"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>{{ headerConf.title }}</ion-title>
     <ion-buttons *ngIf="headerConf.extra.status" slot="end">
-      <ion-button (click)="action($event)" [disabled]="disableExtra"> {{headerConf.extra.text}}
-        <ion-icon *ngIf="headerConf.extra.icon" slot="end" [icon]="headerConf.extra.icon"></ion-icon>
+      <ion-button (click)="extraAction($event)" [disabled]="disableExtra"> {{headerConf.extra.text}}
+        <ion-icon slot="icon-only" *ngIf="headerConf.extra.icon" slot="end" [icon]="headerConf.extra.icon"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

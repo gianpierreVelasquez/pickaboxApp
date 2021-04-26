@@ -10,6 +10,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthComponent } from './modules/layout/authentication/auth.component';
 import { AdminComponent } from './modules/layout/admin/admin.component';
 import { TokenInterceptor } from './core/interceptors/tokenInterceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { File } from '@ionic-native/file/ngx';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,16 @@ import { TokenInterceptor } from './core/interceptors/tokenInterceptor.service';
   ],
   entryComponents: [],
   imports: [
-    BrowserModule, 
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(),
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule 
   ],
   providers: [
+    File,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],

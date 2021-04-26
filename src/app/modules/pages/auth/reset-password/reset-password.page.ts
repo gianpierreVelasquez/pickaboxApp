@@ -28,8 +28,4 @@ export class ResetPasswordPage implements OnInit {
   ngOnInit() {
   }
 
-  recoverPass(values): void {
-    console.log('Missing Service');
-  }
-
 }

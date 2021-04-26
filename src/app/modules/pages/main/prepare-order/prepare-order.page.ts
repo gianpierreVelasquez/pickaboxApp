@@ -31,6 +31,7 @@ export class PrepareOrderPage implements OnInit {
   missingParameter = GeneralLang.Text.MissingParam;
   refreshOrder = GeneralLang.Text.RefreshOrders;
   activeUser: string;
+  lang = GeneralLang;
 
   constructor(
     private readonly _frmProvider: FormProvider,
@@ -62,6 +63,7 @@ export class PrepareOrderPage implements OnInit {
   getOrders(deliveryPersonId: string, status: string, ev: any): void {
     if(deliveryPersonId) {
       this._generalServ.showLoading({ spinner: SPINNER.CRESCENT })
+      
       let bodyReq: any = {
         deliveryPersonId: deliveryPersonId,
         status: status ? status : StatusTypes.DISPONIBLE
@@ -81,7 +83,7 @@ export class PrepareOrderPage implements OnInit {
           ev.target.complete();
         })
     } else {
-      this._generalServ.showToastWarning(GeneralLang.Messages.MustSelectRoute);
+      this._generalServ.showToastWarning(GeneralLang.Title.Warning, GeneralLang.Messages.MustSelectRoute);
     }
   }
 
@@ -95,7 +97,7 @@ export class PrepareOrderPage implements OnInit {
     if(this.selectedRoute){
       this.getOrders(this.selectedRoute, this.selectedStatus, null);
     } else {
-      this._generalServ.showToastWarning(GeneralLang.Messages.MustSelectRoute);
+      this._generalServ.showToastWarning(GeneralLang.Title.Warning, GeneralLang.Messages.MustSelectRoute);
     }
   }
 
@@ -106,7 +108,8 @@ export class PrepareOrderPage implements OnInit {
       hasSubtitle: false,
       back: {
         status: true,
-        icon: 'home'
+        icon: 'home',
+        back: true
       },
       extra: {
         status: false

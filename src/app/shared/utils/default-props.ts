@@ -1,4 +1,5 @@
 import { IHeader, ITab } from "../models/general.interface";
+import { IPackageDetail } from "../models/order.interface";
 import { IUser } from "../models/user.interface";
 
 export const defaultHeader: IHeader = {
@@ -49,3 +50,22 @@ export const verifyTabs: Array<ITab> = [
         layout: 'icon-bottom'
     }
 ]
+
+export const packageList: Array<IPackageDetail> = 
+[
+    {
+      containerId: 1,
+      containerText: "Caja cartón",
+      quantity: 0
+    },
+    {
+      containerId: 2,
+      containerText: "Bolsa plástica",
+      quantity: 0
+    },
+    {
+      containerId: 3,
+      containerText: "Caja de galletas",
+      quantity: 0
+    }
+  ]

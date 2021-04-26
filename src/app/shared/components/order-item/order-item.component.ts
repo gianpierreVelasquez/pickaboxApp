@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, Input, OnInit } from '@angular/core';
 import { GeneralService } from 'src/app/core/services/general.service';
 import { RestService } from 'src/app/core/services/rest.service';
@@ -6,6 +5,7 @@ import { StatusTypes } from '../../enum/option-type.enum';
 import { SPINNER } from '../../enum/spinner.enum';
 import { GeneralLang } from '../../lang/general.lang';
 import { IOrder } from '../../models/order.interface';
+import { ReqBodyUpdateOrderStatusInit } from '../../models/rest.model';
 
 @Component({
   selector: 'app-order-item',
@@ -26,27 +26,33 @@ export class OrderItemComponent implements OnInit {
     private readonly _restServ: RestService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   goToDetail(order: IOrder): void {
 
-    const bodyReq: any = {
-      id: order.id,
-      status: StatusTypes.EN_PREPARACION
+    if (order.status === StatusTypes.DISPONIBLE) {
+      const bodyReq: ReqBodyUpdateOrderStatusInit = {
+        id: order.id,
+        status: StatusTypes.EN_PREPARACION
+      }
+
+      this._generalServ.showLoading({ spinner: SPINNER.CRESCENT });
+
+      this._restServ.updateOrderStatusInit(bodyReq).toPromise()
+        .then(res => {
+          this._generalServ.stopLoading();
+          this._generalServ.showToastSuccess(`La orden #${res.orderNumber} fue actualizada.`);
+          this._generalServ.routeAndParams('/main/prepare-order/detail', res);
+        })
+        .catch(err => {
+          console.error(err);
+          this._generalServ.stopLoading();
+        });
+
+    } else {
+      this._generalServ.routeAndParams('/main/prepare-order/detail', order);
     }
 
-    this._generalServ.showLoading({spinner: SPINNER.CRESCENT});
-
-    this._restServ.updateOrderStatus(bodyReq).toPromise()
-      .then(res => {
-        this._generalServ.stopLoading();
-        this._generalServ.showToastSuccess(`La orden #${res.orderNumber} fue actualizada.`);
-        this._generalServ.routeAndParams('/main/prepare-order/detail', res);
-      })
-      .catch(err => {
-        console.error(err);
-        this._generalServ.stopLoading();
-      })
   }
 
 }

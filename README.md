@@ -13,13 +13,8 @@ UPC Taller de Proyectos I
   ionic serve
 
   /*Para construir app compilacion ANDROID*/
-
-  cordova platform rm android --> Para eliminar la version de android cordova
-  cordova platform add android@latest --> Para instalar la version mas reciente de android de cordova
-  ionic cordova build android
+  ionic build
+  ionic capacitor build android
 
   /*Para construir app compilacion IOS*/
-
-  cordova platform rm ios  --> Para eliminar la version de ios cordova
-  cordova platform add ios@latest --> Para instalar la version mas reciente de ios de cordova
-  ionic cordova build ios
+  ionic capacitor build ios

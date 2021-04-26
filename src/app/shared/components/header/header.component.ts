@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   @Input() headerConf: IHeader;
   @Input() disableBack: boolean = false;
   @Input() disableExtra: boolean = false;
+  @Output() backBtnAction: EventEmitter<void> = new EventEmitter();
   @Output() extraBtnAction: EventEmitter<void> = new EventEmitter();
 
   constructor(
@@ -22,16 +23,20 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  action($event): void {
-    this.extraBtnAction.emit($event)
-  }
-
   back(routeBack?:string): void {
     if(routeBack) {
       this._generalServ.route(routeBack)
     } else {
       this._location.back();
     }
+  }
+
+  backAction($event): void {
+    this.backBtnAction.emit($event);
+  }
+
+  extraAction($event): void {
+    this.extraBtnAction.emit($event);
   }
 
 }

@@ -5,9 +5,9 @@ import { GeneralService } from '../services/general.service';
 import { ServicePath } from 'src/app/shared/enum/service-path.enum';
 import { IUAuth, IUser } from 'src/app/shared/models/user.interface';
 import { SessionService } from '../services/session.service';
-import { ILoader } from 'src/app/shared/models/general.interface';
 import { SPINNER } from 'src/app/shared/enum/spinner.enum';
 import { FormGroup } from '@angular/forms';
+import { GeneralLang } from 'src/app/shared/lang/general.lang';
 
 export interface IAuthResponse {
   tokens: IToken,
@@ -61,7 +61,7 @@ export class AuthenticationService {
         })
         .catch(err => {
           this._generalServ.stopLoading();
-          this._generalServ.showToastError(err.error.message, 'Advertencia');
+          this._generalServ.showToastWarning(GeneralLang.Title.Warning, err.error.message);
           frm.reset();
           resolve(false);
         })

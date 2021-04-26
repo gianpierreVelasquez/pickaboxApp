@@ -17,7 +17,9 @@ export interface HeaderExtra {
 export interface BackProps {
     text?: string;
     icon?: string;
+    back?: boolean;
     routeBack?: string;
+    action?: boolean;
     status: boolean;
 }
 
