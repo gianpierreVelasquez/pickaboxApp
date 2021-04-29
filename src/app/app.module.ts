@@ -13,12 +13,14 @@ import { TokenInterceptor } from './core/interceptors/tokenInterceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { File } from '@ionic-native/file/ngx';
+import { FilterOrderPipe } from './shared/pipes/filter-order.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
-    AdminComponent
+    AdminComponent,
+    FilterOrderPipe
   ],
   entryComponents: [],
   imports: [

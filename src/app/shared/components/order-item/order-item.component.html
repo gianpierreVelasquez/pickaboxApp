@@ -1,6 +1,6 @@
 <div *ngIf="orderList.length > 0">
     <ion-item class="g-item--no-padding h-mt--1 ion-activatable ripple-parent"
-        *ngFor="let order of orderList; let i = index;" [detail]="showDetail" (click)="goToDetail(order)">
+        *ngFor="let order of orderList; let i = index;" [detail]="order.haveDetail" (click)="goToDetail(order, type)">
         <ion-row>
             <ion-col size="12">
                 <ion-row>

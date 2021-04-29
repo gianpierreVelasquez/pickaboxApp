@@ -5,7 +5,7 @@ import { RestService } from 'src/app/core/services/rest.service';
 import { SPINNER } from 'src/app/shared/enum/spinner.enum';
 import { GeneralLang } from 'src/app/shared/lang/general.lang';
 import { IHeader } from 'src/app/shared/models/general.interface';
-import { IOrder, IPrepareDetail, IPrepareManagment } from 'src/app/shared/models/order.interface';
+import { IOrder, IOrderDetail, IOrderManagment } from 'src/app/shared/models/order.interface';
 import { PackageDetailPage } from './package-detail/package-detail.page';
 
 @Component({
@@ -22,7 +22,7 @@ export class DetailPage implements OnInit {
   orderLength: string;
   checkOrder: boolean = true;
 
-  preparationList: IPrepareDetail[] = [];
+  preparationList: IOrderDetail[] = [];
 
   constructor(
     private readonly _activatedRoute: ActivatedRoute,
@@ -45,7 +45,7 @@ export class DetailPage implements OnInit {
   packageOrder(): void {
     this._generalServ.showLoading({ spinner: SPINNER.CRESCENT });
     
-    const bodyReq: IPrepareManagment = {
+    const bodyReq: IOrderManagment = {
       id: this.order.id,
       detail: this.preparationList
     }

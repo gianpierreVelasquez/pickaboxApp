@@ -1,4 +1,4 @@
-import { IPackageDetail, IPrepareDetail } from "./order.interface";
+import { IOrderDetail, IPackageDetail } from "./order.interface";
 
 const hasValue = (v: any): boolean => v !== undefined && v !== null && v !== '';
 
@@ -54,7 +54,7 @@ export class ReqBodyUpdateOrderStatusMiddle {
 
 export class ReqBodyUpdateOrderDetail {
     public id: string;
-    public detail: IPrepareDetail[];
+    public detail: IOrderDetail[];
 
     public static create(obj): ReqBodyUpdateOrderDetail {
         return removeUndefinedFromObj({

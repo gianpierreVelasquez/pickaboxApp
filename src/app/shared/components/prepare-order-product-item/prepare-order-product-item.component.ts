@@ -5,11 +5,11 @@ import { IOrderDetail } from '../../models/order.interface';
 import { FORM } from '../../enum/form-validation.enum';
 
 @Component({
-  selector: 'app-order-product-item',
-  templateUrl: './order-product-item.component.html',
-  styleUrls: ['./order-product-item.component.scss'],
+  selector: 'app-prepare-order-item',
+  templateUrl: './prepare-order-product-item.component.html',
+  styleUrls: ['./prepare-order-product-item.component.scss'],
 })
-export class OrderProductItemComponent implements OnInit {
+export class PrepareOrderProductComponent implements OnInit {
 
   productForm: FormGroup;
 
@@ -45,8 +45,9 @@ export class OrderProductItemComponent implements OnInit {
     if (this.p.length < this.productList.length) {
       for (let i = this.p.length; i < this.productList.length; i++) {
         this.p.push(this._formBuilder.group({
-          itemName: [{value: this.productList[i].materialText, disabled: true}],
+          itemPosition: [{value: this.productList[i].position, disabled: true}],
           itemId: [{value: this.productList[i].materialId, disabled: true}],
+          itemName: [{value: this.productList[i].materialText, disabled: true}],
           itemMeasureUnit: [{value: this.productList[i].measureUnit, disabled: true}],
           itemQuantity: [{value: this.productList[i].quantity, disabled: true}],
           details: ['', [Validators.required]]

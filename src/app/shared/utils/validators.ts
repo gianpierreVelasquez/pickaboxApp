@@ -12,6 +12,11 @@ export const VALIDATIONS = {
         { type: 'min', message: 'No puede ser menor a la cantidad solicitada.' },
         { type: 'max', message: 'No puede superar la cantidad solicitada.' }
     ],
+    verifiedQ: [
+        { type: 'required', message: 'Campo requerido.' },
+        { type: 'min', message: 'No puede ser menor a la cantidad registrada.' },
+        { type: 'max', message: 'No puede superar la cantidad solicitada.' } 
+    ],
     containerText: [
         { type: 'required', message: 'Campo requerido.' },
         { type: 'minlength', message: 'El nombre debe tener al menos 3 letras.' },

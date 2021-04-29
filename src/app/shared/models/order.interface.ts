@@ -56,12 +56,12 @@ export interface IPackageDetail {
 	quantity: number;
 }
 
-export interface IPrepareManagment {
+export interface IOrderManagment {
 	id: string;
-	detail: IPrepareDetail[];
+	detail: IOrderDetail[];
 }
 
-export interface IPrepareDetail {
+export interface IOrderDetail {
 	position: number;
 	pickedQ: number;
 	verifiedQ: number;

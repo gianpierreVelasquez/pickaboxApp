@@ -11,6 +11,7 @@ import { IUser } from 'src/app/shared/models/user.interface';
 import { _mapUser } from 'src/app/shared/utils/general.util';
 import { File } from '@ionic-native/file/ngx';
 import { GeneralLang } from 'src/app/shared/lang/general.lang';
+import { STATUS, StatusTypes } from 'src/app/shared/enum/option-type.enum';
 
 export interface IFunction {
   (): void;
@@ -281,13 +282,13 @@ export class GeneralService {
 
   // file controller
   async writeFile(filename: string, imgFile: any, path?: string) {
-    this.showLoading({spinner: SPINNER.CRESCENT});
+    this.showLoading({ spinner: SPINNER.CRESCENT });
     var documentPath = this._file.documentsDirectory;
     return new Promise((resolve, reject) => {
       this._file.writeFile(path ? path : documentPath, filename, imgFile)
         .then(() => {
           this.stopLoading();
-          resolve(path+filename);
+          resolve(path + filename);
         })
         .catch((err) => {
           this.stopLoading();
@@ -296,6 +297,29 @@ export class GeneralService {
           this.showToastWarning(GeneralLang.Title.Warning, GeneralLang.Messages.CantSaveImage)
         })
     })
+  }
+
+  haveDetail(type: string, status: string): boolean {
+      if( type === STATUS.PREPARE && status === StatusTypes.DISPONIBLE) {
+        return true;
+      }
+      else if( type === STATUS.PREPARE && status === StatusTypes.EN_PREPARACION) {
+        return true;
+      }
+      else if( type === STATUS.PREPARE && status === StatusTypes.PREPARADO) {
+        return false;
+      }
+      else if( type === STATUS.VERIFY && status === StatusTypes.PREPARADO) {
+        return true;
+      }
+      else if( type === STATUS.VERIFY && status === StatusTypes.EN_VERIFICACION) {
+        return true;
+      }
+      else if( type === STATUS.VERIFY && status === StatusTypes.VERIFICADO) {
+        return false;
+      } else {
+        return false;
+      }
   }
 
   //FormChecker

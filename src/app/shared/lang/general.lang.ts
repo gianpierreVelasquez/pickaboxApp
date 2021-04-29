@@ -33,10 +33,11 @@ export const GeneralLang = {
     Title: {
         ForgotPass: "¿Olvidaste tu contraseña?",
         Packages: "Empaques",
-        Important: "Importante",
-        Warning: "Advertencia",
+        Important: "Importante:",
+        Note: "Nota:",
+        Warning: "Advertencia:",
         PackageForm: "Formulario de Paquetes",
-        QR: "Etiquetas QR"
+        QR: "Etiquetas QR",
     },
     Messages: {
         MustSelectRoute: "Debes seleccionar una ruta.",
@@ -44,7 +45,8 @@ export const GeneralLang = {
         LessThanExpectedQuantity: "La cantidad registrada es diferente a la solicitada.",
         CorrectQuantity: "Cantidad ingresada correctamente.",
         PackageFormMessage: "Aqui podras agregar los tipos de paquetes que necesites.",
-        CantSaveImage: 'No se pudo guardar la imagen.',
-        MakeASelection: 'Debe seleccionar almenos un tipo de empaque para continuar.'
+        CantSaveImage: "No se pudo guardar la imagen.",
+        MakeASelection: "Debe seleccionar almenos un tipo de empaque para continuar.",
+        OrderReadyToCheck: "Orden lista para verificar."
     }
 }

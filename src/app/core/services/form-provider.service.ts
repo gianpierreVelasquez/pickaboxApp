@@ -28,11 +28,20 @@ export class FormProvider {
     });
   }
 
-  public responseFrm(quantity: number, index: number): FormGroup {
+  public prepareOrderResponseFrm(quantity: number, position: number): FormGroup {
     return new FormGroup({
-      position: new FormControl(index, [Validators.required]),
-      pickedQ: new FormControl(0, [Validators.required, Validators.min(0), Validators.max(quantity)]),
+      position: new FormControl(position, [Validators.required]),
+      pickedQ: new FormControl('', [Validators.required, Validators.min(0), Validators.max(quantity)]),
       verifiedQ: new FormControl(0, [Validators.required]),
+      deliveredQ: new FormControl(0, [Validators.required])
+    })
+  }
+
+  public verifyOrderResponseFrm(quantity: number, position: number, pickedQ: number): FormGroup {
+    return new FormGroup({
+      position: new FormControl(position, [Validators.required]),
+      pickedQ: new FormControl(pickedQ, [Validators.required]),
+      verifiedQ: new FormControl('', [Validators.required, Validators.min(0), Validators.max(quantity)]),
       deliveredQ: new FormControl(0, [Validators.required])
     })
   }

@@ -93,7 +93,7 @@ export class PackageDetailPage implements OnInit {
       this.c.push(this._formBuilder.group({
         containerId: [this.containerListForm[i].containerId, [Validators.required]],
         containerText: [{value: this.containerListForm[i].containerText, disabled: true}, [Validators.required, Validators.minLength(3)]],
-        quantity: [this.containerListForm[i].quantity, [Validators.required, Validators.min(1)]]
+        quantity: ['', [Validators.required, Validators.min(1)]]
       }));
     }
   }
@@ -102,7 +102,6 @@ export class PackageDetailPage implements OnInit {
     if (this.packagesForm.invalid) {
       this._generalServ.showToastWarning(GeneralLang.Title.Warning, GeneralLang.Messages.PackageFormMessage)
     } else {
-      console.log(this.packagesForm.getRawValue());
       this.getTotalPackages(this.packagesForm.getRawValue().labels);
       this.createLabels(this.packagesForm.getRawValue().labels)
     }

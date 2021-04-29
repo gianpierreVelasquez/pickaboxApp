@@ -13,3 +13,10 @@ export enum StatusTypes {
     VERIFICADO = '5',
     ENTREGADO = '6'
 }
+
+export enum STATUS {
+    PREPARE = 'PREPARE',
+    VERIFY = 'VERIFY',
+    DELIVER = 'DELIVER',
+    MONITOR = 'MONITOR'
+}

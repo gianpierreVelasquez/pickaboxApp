@@ -17,4 +17,5 @@ UPC Taller de Proyectos I
   ionic capacitor build android
 
   /*Para construir app compilacion IOS*/
+  ionic build
   ionic capacitor build ios

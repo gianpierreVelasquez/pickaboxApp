@@ -4,7 +4,7 @@ import { FormProvider } from 'src/app/core/services/form-provider.service';
 import { GeneralService } from 'src/app/core/services/general.service';
 import { RestService } from 'src/app/core/services/rest.service';
 import { SessionService } from 'src/app/core/services/session.service';
-import { StatusTypes } from 'src/app/shared/enum/option-type.enum';
+import { STATUS, StatusTypes } from 'src/app/shared/enum/option-type.enum';
 import { SPINNER } from 'src/app/shared/enum/spinner.enum';
 import { GeneralLang } from 'src/app/shared/lang/general.lang';
 import { IHeader, ITab } from 'src/app/shared/models/general.interface';
@@ -31,6 +31,7 @@ export class CheckOrderPage implements OnInit {
   missingParameter = GeneralLang.Text.MissingParam;
   refreshOrder = GeneralLang.Text.RefreshOrders;
   activeUser: string;
+  type = STATUS.VERIFY;
 
   constructor(
     private readonly _frmProvider: FormProvider,
@@ -70,7 +71,7 @@ export class CheckOrderPage implements OnInit {
       this._restServ.getOrders(bodyReq).toPromise()
         .then(res => {
           if (res) {
-            this.orders = res;
+            this.orders = res.map(e => ({...e, haveDetail: this._generalServ.haveDetail(this.type, e.status)}));
             this._generalServ.stopLoading();
             ev.target.complete();
           }

@@ -1,9 +1,16 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>detail</ion-title>
+<app-header [headerConf]="headerSettings" [disableExtra]="checkOrder" (extraBtnAction)="packageOrder()">
+  <ion-toolbar color="secondary" class="ion-text-center">
+      <p class="h-fs--1-3">{{order.customerName}}</p>
   </ion-toolbar>
-</ion-header>
+</app-header>
 
-<ion-content>
+<ion-content class="ion-no-padding">
+
+ <app-check-order-item [productList]="order.detail" (getFormStatus)="getFormStatus( $event )"></app-check-order-item> 
 
 </ion-content>
+
+<app-footer [firstSpeech]="orderId"
+  [secondCol]="true"
+  [secondSpeech]="orderLength">
+</app-footer>
