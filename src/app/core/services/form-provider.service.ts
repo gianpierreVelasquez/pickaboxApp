@@ -31,7 +31,7 @@ export class FormProvider {
   public prepareOrderResponseFrm(quantity: number, position: number): FormGroup {
     return new FormGroup({
       position: new FormControl(position, [Validators.required]),
-      pickedQ: new FormControl('', [Validators.required, Validators.min(0), Validators.max(quantity)]),
+      pickedQ: new FormControl('', [Validators.required, Validators.min(0), Validators.max(quantity), Validators.pattern("^[0-9]+$")]),
       verifiedQ: new FormControl(0, [Validators.required]),
       deliveredQ: new FormControl(0, [Validators.required])
     })
@@ -41,7 +41,7 @@ export class FormProvider {
     return new FormGroup({
       position: new FormControl(position, [Validators.required]),
       pickedQ: new FormControl(pickedQ, [Validators.required]),
-      verifiedQ: new FormControl('', [Validators.required, Validators.min(0), Validators.max(quantity)]),
+      verifiedQ: new FormControl('', [Validators.required, Validators.min(0), Validators.pattern("^[0-9]+$")]),
       deliveredQ: new FormControl(0, [Validators.required])
     })
   }
@@ -55,6 +55,12 @@ export class FormProvider {
   public packageFrm(): FormGroup {
     return new FormGroup({
       labels: new FormArray([])
+    })
+  }
+
+  public monitorFrm(): FormGroup {
+    return new FormGroup({
+      byDate: new FormControl('', [Validators.required])
     })
   }
 

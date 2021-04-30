@@ -75,3 +75,13 @@ export class ReqBodyPostPackagesToGetQR {
         });
     }
 }
+
+export class ReqQueryGetMonitor {
+    public deliveryDate: string;
+
+    public static create(obj): ReqQueryGetMonitor {
+        return removeUndefinedFromObj({
+            deliveryDate: hasValue(obj.deliveryDate) ? '' + obj.deliveryDate : undefined
+        });
+    }
+}

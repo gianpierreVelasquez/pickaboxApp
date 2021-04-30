@@ -164,6 +164,22 @@
     &--danger {
         color: #eb445a;
     }
+
+    &--red {
+        color: #ff0022;
+    }
+
+    &--blue {
+        color: #2000d6;
+    }
+
+    &--yellow {
+        color: #ffce0b;
+    }
+
+    &--green {
+        color: #058c00;
+    }
 }
 
 // posiiton
@@ -307,6 +323,11 @@
     &--column {
         flex-direction: column;
     }
+
+    &--row {
+        display: flex;
+        flex-direction: row;
+    }
 }
 
 .h-align-self {
@@ -381,9 +402,15 @@ $borderadius: 5, 15, 20, 25, 35;
     border-radius: 50%;
 }
 
+// width
+$witdhs: 10, 13, 15, 20, 22, 23, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100;
+@each $width in $witdhs {
+    .w-#{$width} {
+        width: 1% * $width !important;
+    }
+}
 // paddings and margins
 $items: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 19, 20, 21, 30;
-
 @each $item in $items {
     .h-m--#{$item} {
         margin: 1rem * $item !important;
@@ -409,7 +436,7 @@ $items: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 19, 20, 21, 30;
         margin-bottom: 1rem * $item !important;
         margin-top: 1rem * $item !important;
     }
-    
+
     .h-mx--#{$item} {
         margin-left: 1rem * $item !important;
         margin-right: 1rem * $item !important;
@@ -750,9 +777,32 @@ $items: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 19, 20, 21, 30;
 }
 
 // bg color
-.h-bg {
+.h-bc {
+    &--red {
+        background: #ffc3c3;
+    }
+
+    &--blue {
+        background: #acc9ff;
+    }
+
+    &--yellow {
+        background: #fff3cd;
+    }
+
+    &--green {
+        background: #e3ffe6;
+    }
+
     &--gray {
-        --background: #cccccc;
+        background: #cccccc;
+    }
+}
+
+// border && color
+.h-box {
+    &--gray {
+        border: 1px solid #cccccc;
     }
 }
 

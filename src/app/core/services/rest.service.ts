@@ -2,8 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ServicePath } from 'src/app/shared/enum/service-path.enum';
-import { IOrder, IQr, IRoute } from 'src/app/shared/models/order.interface';
-import { ReqBodyPostPackagesToGetQR, ReqBodyUpdateOrderDetail, ReqBodyUpdateOrderStatusInit, ReqBodyUpdateOrderStatusMiddle, ReqQueryGetOrders } from 'src/app/shared/models/rest.model';
+import { IMonitor, IOrder, IQr, IRoute } from 'src/app/shared/models/order.interface';
+import { 
+  ReqBodyPostPackagesToGetQR, 
+  ReqBodyUpdateOrderDetail, 
+  ReqBodyUpdateOrderStatusInit, 
+  ReqBodyUpdateOrderStatusMiddle, 
+  ReqQueryGetMonitor, 
+  ReqQueryGetOrders 
+} from 'src/app/shared/models/rest.model';
 import { environment } from 'src/environments/environment';
 
 const URL = environment.BASE_API_URL;
@@ -44,5 +51,9 @@ export class RestService {
 
   public postPackagesToGetQR(bodyReq: ReqBodyPostPackagesToGetQR): Observable<any> {
     return this._http.post<IQr>(`${URL + this._rootEntity.ORDER}/label`, ReqBodyPostPackagesToGetQR.create(bodyReq), {})
+  }
+
+  public getMonitor(queryReq: ReqQueryGetMonitor): Observable<any> {
+    return this._http.get<IMonitor>(`${URL + this._rootEntity.ORDER}/monitor`, { params: { ...ReqQueryGetMonitor.create(queryReq) }})
   }
 }

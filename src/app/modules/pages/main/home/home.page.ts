@@ -18,40 +18,12 @@ export class HomePage implements OnInit {
 
   headerSettings: IHeader;
 
-  optionList: OptionProps[] = [
-    {
-      id: '001',
-      src: './../../assets/images/option-prepare.png',
-      title: 'Preparar',
-      route: '/main/prepare-order',
-      type: OptionTypes.PREPARADOR
-    },
-    {
-      id: '002',
-      src: './../../assets/images/option-check.png',
-      title: 'Verificar',
-      route: '/main/check-order',
-      type: OptionTypes.VERIFICADOR
-    },
-    {
-      id: '003',
-      src: './../../assets/images/option-deliver.png',
-      title: 'Entregar',
-      route: '/main/deliver-order',
-      type: OptionTypes.ENTREGADOR
-    },
-    {
-      id: '004',
-      src: './../../assets/images/option-monitor.png',
-      title: 'Monitorear',
-      route: '/main/monitor',
-      type: OptionTypes.ADMIN
-    }
-  ]
+  optionList: OptionProps[];
 
   user: IUser;
   userlbl = GeneralLang.Labels.User;
   activeUser: string;
+  isAllowed: boolean;
 
   constructor(
     private readonly _generalServ: GeneralService,
@@ -61,6 +33,7 @@ export class HomePage implements OnInit {
   ngOnInit(): void {
     this._initValues();
     this.user = this._session.getSession(environment.KEYS.USER);
+    this.optionList = this._generalServ.menuByProfile(this.user.profile);
   }
 
   routeTo(path:string): void {

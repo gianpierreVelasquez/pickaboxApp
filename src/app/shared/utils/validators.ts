@@ -10,12 +10,13 @@ export const VALIDATIONS = {
     pickedQ: [
         { type: 'required', message: 'Campo requerido.' },
         { type: 'min', message: 'No puede ser menor a la cantidad solicitada.' },
-        { type: 'max', message: 'No puede superar la cantidad solicitada.' }
+        { type: 'max', message: 'No puede superar la cantidad solicitada.' },
+        { type: 'pattern', message: 'Solo puede ingresar valores enteros.'}
     ],
     verifiedQ: [
         { type: 'required', message: 'Campo requerido.' },
         { type: 'min', message: 'No puede ser menor a la cantidad registrada.' },
-        { type: 'max', message: 'No puede superar la cantidad solicitada.' } 
+        { type: 'pattern', message: 'Solo puede ingresar valores enteros.'}
     ],
     containerText: [
         { type: 'required', message: 'Campo requerido.' },

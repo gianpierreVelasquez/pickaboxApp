@@ -71,3 +71,23 @@ export interface IOrderDetail {
 export interface IQr {
 	qrCode: string;
 }
+
+export interface IMonitor {
+	data: IMonitorDetail[];
+	total: IMonitorTotal[];
+}
+
+export interface IMonitorDetail {
+	ruta: string;
+	detalle: IRutaDetail[];
+}
+
+export interface IRutaDetail {
+	status: string;
+	quantity: number;
+}
+
+export interface IMonitorTotal {
+	status: string;
+	quantity: number;
+}

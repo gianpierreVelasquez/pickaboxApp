@@ -11,7 +11,7 @@ import { IUser } from 'src/app/shared/models/user.interface';
 import { _mapUser } from 'src/app/shared/utils/general.util';
 import { File } from '@ionic-native/file/ngx';
 import { GeneralLang } from 'src/app/shared/lang/general.lang';
-import { STATUS, StatusTypes } from 'src/app/shared/enum/option-type.enum';
+import { OptionTypes, STATUS, StatusTypes } from 'src/app/shared/enum/option-type.enum';
 
 export interface IFunction {
   (): void;
@@ -299,27 +299,176 @@ export class GeneralService {
     })
   }
 
+  menuByProfile(profile): any {
+    switch (profile) {
+      case OptionTypes.PREPARADOR:
+        return [
+          {
+            id: '001',
+            src: './../../assets/images/option-prepare.png',
+            title: 'Preparar',
+            route: '/main/prepare-order',
+            type: OptionTypes.PREPARADOR,
+            allow: true
+          },
+          {
+            id: '002',
+            src: './../../assets/images/option-check.png',
+            title: 'Verificar',
+            route: '/main/check-order',
+            type: OptionTypes.VERIFICADOR,
+            allow: false
+          },
+          {
+            id: '003',
+            src: './../../assets/images/option-deliver.png',
+            title: 'Entregar',
+            route: '/main/deliver-order',
+            type: OptionTypes.ENTREGADOR,
+            allow: false
+          },
+          {
+            id: '004',
+            src: './../../assets/images/option-monitor.png',
+            title: 'Monitorear',
+            route: '/main/monitor',
+            type: OptionTypes.ADMIN,
+            allow: true
+          }
+        ]
+        break;
+      case OptionTypes.VERIFICADOR:
+        return [
+          {
+            id: '001',
+            src: './../../assets/images/option-prepare.png',
+            title: 'Preparar',
+            route: '/main/prepare-order',
+            type: OptionTypes.PREPARADOR,
+            allow: false
+          },
+          {
+            id: '002',
+            src: './../../assets/images/option-check.png',
+            title: 'Verificar',
+            route: '/main/check-order',
+            type: OptionTypes.VERIFICADOR,
+            allow: true
+          },
+          {
+            id: '003',
+            src: './../../assets/images/option-deliver.png',
+            title: 'Entregar',
+            route: '/main/deliver-order',
+            type: OptionTypes.ENTREGADOR,
+            allow: false
+          },
+          {
+            id: '004',
+            src: './../../assets/images/option-monitor.png',
+            title: 'Monitorear',
+            route: '/main/monitor',
+            type: OptionTypes.ADMIN,
+            allow: true
+          }
+        ]
+        break;
+      case OptionTypes.ENTREGADOR:
+        return [
+          {
+            id: '001',
+            src: './../../assets/images/option-prepare.png',
+            title: 'Preparar',
+            route: '/main/prepare-order',
+            type: OptionTypes.PREPARADOR,
+            allow: false
+          },
+          {
+            id: '002',
+            src: './../../assets/images/option-check.png',
+            title: 'Verificar',
+            route: '/main/check-order',
+            type: OptionTypes.VERIFICADOR,
+            allow: false
+          },
+          {
+            id: '003',
+            src: './../../assets/images/option-deliver.png',
+            title: 'Entregar',
+            route: '/main/deliver-order',
+            type: OptionTypes.ENTREGADOR,
+            allow: true
+          },
+          {
+            id: '004',
+            src: './../../assets/images/option-monitor.png',
+            title: 'Monitorear',
+            route: '/main/monitor',
+            type: OptionTypes.ADMIN,
+            allow: true
+          }
+        ]
+        break;
+      default:
+        return [
+          {
+            id: '001',
+            src: './../../assets/images/option-prepare.png',
+            title: 'Preparar',
+            route: '/main/prepare-order',
+            type: OptionTypes.PREPARADOR,
+            allow: true
+          },
+          {
+            id: '002',
+            src: './../../assets/images/option-check.png',
+            title: 'Verificar',
+            route: '/main/check-order',
+            type: OptionTypes.VERIFICADOR,
+            allow: true
+          },
+          {
+            id: '003',
+            src: './../../assets/images/option-deliver.png',
+            title: 'Entregar',
+            route: '/main/deliver-order',
+            type: OptionTypes.ENTREGADOR,
+            allow: true
+          },
+          {
+            id: '004',
+            src: './../../assets/images/option-monitor.png',
+            title: 'Monitorear',
+            route: '/main/monitor',
+            type: OptionTypes.ADMIN,
+            allow: true
+          }
+        ]
+        break;
+    }
+  }
+
   haveDetail(type: string, status: string): boolean {
-      if( type === STATUS.PREPARE && status === StatusTypes.DISPONIBLE) {
-        return true;
-      }
-      else if( type === STATUS.PREPARE && status === StatusTypes.EN_PREPARACION) {
-        return true;
-      }
-      else if( type === STATUS.PREPARE && status === StatusTypes.PREPARADO) {
-        return false;
-      }
-      else if( type === STATUS.VERIFY && status === StatusTypes.PREPARADO) {
-        return true;
-      }
-      else if( type === STATUS.VERIFY && status === StatusTypes.EN_VERIFICACION) {
-        return true;
-      }
-      else if( type === STATUS.VERIFY && status === StatusTypes.VERIFICADO) {
-        return false;
-      } else {
-        return false;
-      }
+    if (type === STATUS.PREPARE && status === StatusTypes.DISPONIBLE) {
+      return true;
+    }
+    else if (type === STATUS.PREPARE && status === StatusTypes.EN_PREPARACION) {
+      return true;
+    }
+    else if (type === STATUS.PREPARE && status === StatusTypes.PREPARADO) {
+      return false;
+    }
+    else if (type === STATUS.VERIFY && status === StatusTypes.PREPARADO) {
+      return true;
+    }
+    else if (type === STATUS.VERIFY && status === StatusTypes.EN_VERIFICACION) {
+      return true;
+    }
+    else if (type === STATUS.VERIFY && status === StatusTypes.VERIFICADO) {
+      return false;
+    } else {
+      return false;
+    }
   }
 
   //FormChecker

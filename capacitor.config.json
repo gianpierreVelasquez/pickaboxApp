@@ -1,5 +1,5 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "app.manager.pickabox",
   "appName": "pickaboxApp",
   "bundledWebRuntime": false,
   "npmClient": "npm",

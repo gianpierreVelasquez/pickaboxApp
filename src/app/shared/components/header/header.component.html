@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar class="title" [color]="headerConf.barColor || 'primary' ">
     <ion-buttons *ngIf="headerConf.back.status" slot="start">
       <ion-button *ngIf="headerConf.back.back" (click)="back(headerConf.back.routeBack)" [disabled]="disableBack"> {{headerConf.back.text}}

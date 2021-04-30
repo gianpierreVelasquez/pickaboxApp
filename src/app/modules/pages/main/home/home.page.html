@@ -8,7 +8,7 @@
     <ion-row>
         <ion-col class="h-mb--1" size="6" size-sm="6" *ngFor="let option of optionList">
             <div class="img-container h-juscont--center h-borderadius--15 ion-activatable ripple-parent disabled"
-                [ngClass]="{'enabled': user.profile === option.type}"
+                [ngClass]="{'enabled': option.allow}"
                 (click)="routeTo(option.route)">
                 <img class="img-centered" [src]="option.src" alt="option"/>
                 <p class="title-p h-font--medium h-c--white h-fs--1-5 h-pl--2">{{option.title}}</p>

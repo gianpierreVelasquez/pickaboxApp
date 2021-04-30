@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { File } from '@ionic-native/file/ngx';
 import { FilterOrderPipe } from './shared/pipes/filter-order.pipe';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { FilterOrderPipe } from './shared/pipes/filter-order.pipe';
   ],
   providers: [
     File,
+    DatePipe,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],

@@ -22,13 +22,16 @@ export const GeneralLang = {
         Route: 'Ruta: ',
         Center: 'Centro: ',
         Maker: 'Preparador: ',
-        Delivery: 'Entrega: '
+        Delivery: 'Entrega: ',
+        Resume: 'Totales: '
     },
     Text: {
         ForgotPass: "Ingresa tu correo electrónico y te enviaremos un enlace para que puedas recueperar tu contraseña.",
         NoItems: "No se encontraron registros.",
         MissingParam: "Falta seleccionar el parametro de ruta.",
-        RefreshOrders: "Actualizando ordenes."
+        RefreshOrders: "Actualizando ordenes.",
+        MissingDateParam: "Falta seleccionar el parametro de fecha",
+        RefreshData: "Actualizando información.",
     },
     Title: {
         ForgotPass: "¿Olvidaste tu contraseña?",
@@ -47,6 +50,7 @@ export const GeneralLang = {
         PackageFormMessage: "Aqui podras agregar los tipos de paquetes que necesites.",
         CantSaveImage: "No se pudo guardar la imagen.",
         MakeASelection: "Debe seleccionar almenos un tipo de empaque para continuar.",
-        OrderReadyToCheck: "Orden lista para verificar."
+        OrderReadyToCheck: "Orden lista para verificar.",
+        OrderReadyDeliver: "Orden lista para entregar.",
     }
 }
