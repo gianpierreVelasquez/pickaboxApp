@@ -51,9 +51,9 @@ export class DetailPage implements OnInit {
     }
 
     this._restServ.updateOrderDetail(bodyReq).toPromise()
-      .then((res) => {
+      .then(async (res) => {
         this._generalServ.stopLoading();
-        this._generalServ.showModal('package_modal', PackageDetailPage, { 'order': this.order, 'modalId': 'package_modal' }, 'g-modal--bottom');
+        await this._generalServ.showModal('package_modal', PackageDetailPage, { 'order': this.order, 'modalId': 'package_modal' }, 'g-modal--bottom');
       })
       .catch(err => {
         console.error(err);

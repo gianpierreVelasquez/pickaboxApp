@@ -1,0 +1,132 @@
+<app-header [headerConf]="headerSettings" (extraBtnAction)="onClose($event)" [disableExtra]="!allFinished">
+</app-header>
+
+<ion-content class="ion-padding">
+
+    <div *ngIf="!selectedOrder">
+        <ion-row>
+            <ion-col size="12" class="ion-text-center">
+                <p class="h-pl--1 h-my--small h-fs--1-4 h-font--bold"> {{ lang.Title.ReportList }} </p>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="6" class="ion-text-center" *ngFor="let order of orderList">
+                <ion-card class="ion-activatable ripple-parent" (click)="selectOrder(order)">
+                    <ion-card-content class="h-flex--direction-column">
+                        <ion-img [src]="icon"></ion-img>
+                        <p class="h-my--small h-fs--1 h-font--bold"> {{ lang.Labels.OrderNumber }} </p>
+                        <p class="h-my--small h-fs--1-2 h-font--medium h-c--gray"> # {{ order.orderNumber }} </p>
+                    </ion-card-content>
+                    <ion-ripple-effect></ion-ripple-effect>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </div>
+
+    <div *ngIf="selectedOrder">
+        <!-- Report Header -->
+        <ion-toolbar color="secondary" class="ion-text-center">
+            <p class="h-fs--1-2"> {{ lang.Title.ReportOf }} {{ selectedOrder.orderNumber }} </p>
+            <ion-buttons slot="end">
+                <ion-button fill="clear" (click)="hideReport()">
+                    <ion-icon slot="icon-only" name="close"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+        </ion-toolbar>
+
+        <!-- Report Body -->
+        <ion-card class="g-card--no-margin g-card--no-shadow h-box--dashed">
+            <div *ngFor="let item of headerReport">
+                <ion-row *ngIf="item.type === 'row' ">
+                    <ion-col size="8">
+                        <p class="h-pl--1 h-my--small h-fs--1-2 h-font--bold"> {{ item.label }} </p>
+                    </ion-col>
+                    <ion-col size="4" class="h-display--flex h-juscont--flex-end">
+                        <p class="h-pr--1 h-my--small h-fs--1-1 h-font--medium"> {{ item.data }} </p>
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="item.type === 'textarea' ">
+                    <ion-col size="12">
+                        <p class="h-pl--1 h-my--small h-fs--1-2 h-font--bold"> {{ item.label }} </p>
+                    </ion-col>
+                    <ion-col size="12">
+                        <p class="h-pl--1 h-my--small h-fs--1-1 h-font--medium"> {{ item.data }} </p>
+                    </ion-col>
+                </ion-row>
+            </div>
+
+            <div class="h-separator"></div>
+
+            <ion-row class="ion-no-padding">
+                <ion-col size="12" class="w-100 h-flex--row ion-text-center">
+                    <div *ngFor="let h of headers" [ngClass]="h.width">
+                        <p class="h-my--small h-fs--1 h-font--bolder"> {{ h.label }} </p>
+                    </div>
+                </ion-col>
+            </ion-row>
+
+            <div *ngFor="let item of selectedOrder.detail">
+                <ion-row>
+                    <ion-col size="3" class="ion-text-center">
+                        <p class="h-my--small h-fs--0-9 h-font--medium"> {{ item.materialId }} </p>
+                    </ion-col>
+                    <ion-col size="5">
+                        <p class="h-my--small h-fs--0-9 h-font--medium"> {{ item.materialText }} </p>
+                    </ion-col>
+                    <ion-col size="2" class="ion-text-center">
+                        <p class="h-my--small h-fs--0-9 h-font--medium"> {{ item.pickedQ }} </p>
+                    </ion-col>
+                    <ion-col size="2" class="ion-text-center">
+                        <p class="h-my--small h-fs--0-9 h-font--medium"> {{ item.measureUnit }} </p>
+                    </ion-col>
+                </ion-row>
+            </div>
+
+            <div class="h-separator"></div>
+
+            <ion-row class="ion-text-center">
+                <ion-col size="3">
+                    <p class="h-my--small h-fs--1-1 h-font--bolder"> {{ lang.Labels.Total }} </p>
+                </ion-col>
+                <ion-col size="5">
+                </ion-col>
+                <ion-col size="2" class="ion-text-center">
+                    <p class="h-my--small h-fs--1-1 h-font--bolder"> {{ totalMaterialQuantity }} </p>
+                </ion-col>
+            </ion-row>
+
+            <div class="h-separator"></div>
+
+            <ion-row>
+                <ion-col size="8">
+                    <p class="h-pl--1 h-my--small h-fs--1-2 h-font--bold"> {{ lang.Labels.DeliverDate }} </p>
+                </ion-col>
+                <ion-col size="4" class="h-display--flex h-juscont--flex-end">
+                    <p class="h-pr--1 h-my--small h-fs--1-1 h-font--medium"> {{ deliveryDate }} </p>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="8">
+                    <p class="h-pl--1 h-my--small h-fs--1-2 h-font--bold"> {{ lang.Labels.Sign }} </p>
+                </ion-col>
+            </ion-row>
+
+            <img [src]="signature">
+
+            <div class="h-separator"></div>
+
+            <ion-row class="ion-text-center">
+                <ion-col size="12" class="ion-no-padding">
+                    <p class="h-my--0 h-fs--1 h-font--bold"> {{ lang.Labels.Executor }} </p>
+                </ion-col>
+                <ion-col size="12" class="ion-no-padding">
+                    <p class="h-my--0 h-fs--1-1 h-font--medium h-c--gray"> {{ deliveryDate }} </p>
+                </ion-col>
+            </ion-row>
+
+        </ion-card>
+    </div>
+
+</ion-content>

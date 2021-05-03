@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { AuthenticationService } from 'src/app/core/auth/authentication.service';
 import { FormProvider } from 'src/app/core/services/form-provider.service';
-import { GeneralService } from 'src/app/core/services/general.service';
 import { GeneralLang } from 'src/app/shared/lang/general.lang';
 import { LOGO_ICON } from 'src/app/shared/utils/resources.path';
 import { VALIDATIONS } from 'src/app/shared/utils/validators';

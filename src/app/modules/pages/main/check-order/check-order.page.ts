@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormProvider } from 'src/app/core/services/form-provider.service';
 import { GeneralService } from 'src/app/core/services/general.service';
@@ -31,6 +31,7 @@ export class CheckOrderPage implements OnInit {
   missingParameter = GeneralLang.Text.MissingParam;
   refreshOrder = GeneralLang.Text.RefreshOrders;
   activeUser: string;
+  lang = GeneralLang;
   type = STATUS.VERIFY;
 
   constructor(
@@ -65,7 +66,8 @@ export class CheckOrderPage implements OnInit {
       this._generalServ.showLoading({ spinner: SPINNER.CRESCENT })
       let bodyReq: any = {
         deliveryPersonId: deliveryPersonId,
-        status: status ? status : StatusTypes.PREPARADO
+        status: status ? status : StatusTypes.PREPARADO,
+        term: this.prepareForm.controls.term.value
       };
   
       this._restServ.getOrders(bodyReq).toPromise()
@@ -107,8 +109,9 @@ export class CheckOrderPage implements OnInit {
       hasSubtitle: false,
       back: {
         status: true,
+        icon: 'home',
         back: true,
-        icon: 'home'
+        routeBack: '/main/home'
       },
       extra: {
         status: false

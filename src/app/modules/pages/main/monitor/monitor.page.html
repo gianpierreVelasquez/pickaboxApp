@@ -16,40 +16,23 @@
   </form>
 
   <ion-row *ngIf="selectedDate" class="ion-no-padding">
-    <ion-col size="12" class="w-100 h-flex--row ion-text-center ion-justify-content-end">
-      <div class="w-13">
-        <p class="h-font--bold h-c--red">D</p>
+    <ion-col size="12" class="w-100 h-flex--row ion-text-center">
+      <div class="w-20">
+        <p class="h-font--bolder h-c--gray h-my--small h-fs--1"> {{ lang.Labels.Legend }} </p>
       </div>
-      <div class="w-13">
-        <p class="h-font--bold h-c--blue">EP</p>
-      </div>
-      <div class="w-13">
-        <p class="h-font--bold h-c--blue">P</p>
-      </div>
-      <div class="w-13">
-        <p class="h-font--bold h-c--yellow">EV</p>
-      </div>
-      <div class="w-13">
-        <p class="h-font--bold h-c--yellow">V</p>
-      </div>
-      <div class="w-13">
-        <p class="h-font--bold h-c--green">EN</p>
+      <div class="w-13" *ngFor="let label of labelList">
+        <p class="h-font--bold h-my--small" [ngClass]="getLabelByStatus(label.status)" [tooltip]="label.tooltip"
+          positionV="bottom" mobileEvent="click" duration="1200" hideOthers="true"> {{ label.description }} </p>
       </div>
     </ion-col>
   </ion-row>
-  
+
 </app-header>
 
 <ion-content class="ion-no-padding">
 
-  <div *ngIf="!selectedDate"
-    class="ion-text-center ion-align-items-center ion-text-uppercase h-pa--4 h-fonts--1-3 h-c--gray">
-    <p>{{missingParameter}}</p>
-  </div>
-
   <div *ngIf="selectedDate">
-    <app-monitor-item 
-      [monitorList]="monitorList">
+    <app-monitor-item [monitorList]="monitorList">
     </app-monitor-item>
   </div>
 

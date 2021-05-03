@@ -11,7 +11,7 @@
     <ion-title>{{ headerConf.title }}</ion-title>
     <ion-buttons *ngIf="headerConf.extra.status" slot="end">
       <ion-button (click)="extraAction($event)" [disabled]="disableExtra"> {{headerConf.extra.text}}
-        <ion-icon slot="icon-only" *ngIf="headerConf.extra.icon" slot="end" [icon]="headerConf.extra.icon"></ion-icon>
+        <ion-icon slot="icon-only" *ngIf="headerConf.extra.icon" [icon]="headerConf.extra.icon"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

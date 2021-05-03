@@ -1,9 +1,9 @@
 export interface IRoute {
-    id: string,
-    businessName: string,
-    responsableName: string,
-    contactEmail: string,
-    deliveryPersonId: string
+	id: string,
+	businessName: string,
+	responsableName: string,
+	contactEmail: string,
+	deliveryPersonId: string
 }
 
 export interface IOrder {
@@ -25,8 +25,9 @@ export interface IOrder {
 	customerAddress: string;
 	customerId: string;
 	preferredDate: string;
+	totalPackages: number;
 	updateTime: number;
-    detail: IOrderDetail[];
+	detail: IOrderDetail[];
 }
 
 export interface IOrderDetail {
@@ -89,5 +90,23 @@ export interface IRutaDetail {
 
 export interface IMonitorTotal {
 	status: string;
+	quantity: number;
+}
+
+export interface IDelivery {
+	deliveryPersonId: string;
+	responsableName: string;
+	deliveryDate: string;
+	clients: number;
+	orders: number;
+	labels: IDeliveryDetail[];
+	totalPackages: number;
+	completed: boolean;
+	finished: boolean;
+}
+
+export interface IDeliveryDetail {
+	containerId: number;
+	containerText: string;
 	quantity: number;
 }

@@ -18,7 +18,7 @@ export class FormProvider {
   public prepareFrm(): FormGroup {
     return new FormGroup({
       deliveryPersonId: new FormControl(''),
-      searchText: new FormControl('')
+      term: new FormControl('')
     });
   }
 
@@ -59,6 +59,12 @@ export class FormProvider {
   }
 
   public monitorFrm(): FormGroup {
+    return new FormGroup({
+      byDate: new FormControl('', [Validators.required])
+    })
+  }
+
+  public deliveryFrm(): FormGroup {
     return new FormGroup({
       byDate: new FormControl('', [Validators.required])
     })

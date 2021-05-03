@@ -17,6 +17,6 @@ export enum StatusTypes {
 export enum STATUS {
     PREPARE = 'PREPARE',
     VERIFY = 'VERIFY',
-    DELIVER = 'DELIVER',
+    DELIVERY = 'DELIVER',
     MONITOR = 'MONITOR'
 }

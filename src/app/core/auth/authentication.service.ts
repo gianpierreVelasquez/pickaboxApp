@@ -35,6 +35,34 @@ export class AuthenticationService {
     private readonly _session: SessionService
   ) { }
 
+  authRefresh() {
+    const bodyReq = {
+      email: this._session.getSession(environment.KEYS.USER).email,
+      refreshToken: this._session.getSession(environment.KEYS.TOKEN).refreshToken
+    }
+    return new Promise(resolve => {
+      this._generalServ.showLoading({ spinner: SPINNER.CRESCENT });
+
+      this._http.post(`${URL + this._rootEntity.AUTHENTICATION}/refresh`, JSON.stringify(bodyReq)).toPromise()
+        .then((resp: any) => {
+          if (resp) {
+            var newToken = {
+              accessToken: resp.accessToken,
+              idToken: resp.idToken,
+              refreshToken: this._session.getSession(environment.KEYS.TOKEN).refreshToken
+            }
+            this._session.removeSession(environment.KEYS.TOKEN);
+            this._session.setSession(environment.KEYS.TOKEN, newToken);
+          }
+        })
+        .catch(err => {
+          this._generalServ.stopLoading();
+          this._generalServ.showToastWarning(GeneralLang.Title.Warning, err.error.message);
+          resolve(false);
+        })
+    });
+  }
+
   authVerification(userAuth: IUAuth, frm: FormGroup) {
     var userAuthentication: IUAuth;
 
@@ -44,7 +72,7 @@ export class AuthenticationService {
     }
 
     return new Promise(resolve => {
-      this._generalServ.showLoading({spinner: SPINNER.CRESCENT});
+      this._generalServ.showLoading({ spinner: SPINNER.CRESCENT });
       this._http.post<IAuthResponse>(`${URL + this._rootEntity.AUTHENTICATION}/login`, JSON.stringify(userAuthentication)).toPromise()
         .then(resp => {
           if (resp) {

@@ -15,6 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { File } from '@ionic-native/file/ngx';
 import { FilterOrderPipe } from './shared/pipes/filter-order.pipe';
 import { DatePipe } from '@angular/common';
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @NgModule({
   declarations: [
@@ -28,16 +30,18 @@ import { DatePipe } from '@angular/common';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({swipeBackEnabled: false,}),
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule 
+    BrowserAnimationsModule
   ],
   providers: [
     File,
     DatePipe,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    Base64ToGallery,
+    BarcodeScanner
   ],
   bootstrap: [AppComponent],
 })

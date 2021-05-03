@@ -82,8 +82,10 @@ export class DetailPage implements OnInit {
 
     this._restServ.updateOrderStatusMiddle(bodyReq).toPromise()
       .then(res => {
-        this._generalServ.stopLoading();
-        this._generalServ.route('/main/check-order');
+        if(res) {
+          this._generalServ.stopLoading();
+          this._generalServ.route('/main/check-order');
+        } 
       })
       .catch(err => {
         this._generalServ.stopLoading();

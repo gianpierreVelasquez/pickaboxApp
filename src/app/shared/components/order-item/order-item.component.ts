@@ -76,10 +76,8 @@ export class OrderItemComponent implements OnInit {
     else if( type === STATUS.VERIFY && order.status === StatusTypes.EN_VERIFICACION) {
       this._generalServ.routeAndParams('/main/check-order/detail', order);
     }
-    else if( type === STATUS.VERIFY && order.status === StatusTypes.VERIFICADO) {
-      this._generalServ.showToastInfo(GeneralLang.Messages.OrderReadyDeliver, GeneralLang.Title.Note)
-    } else {
-      
+    else {
+      this._generalServ.showToastInfo(GeneralLang.Messages.OrderReadyToDeliver, GeneralLang.Title.Note)
     }
   }
 }

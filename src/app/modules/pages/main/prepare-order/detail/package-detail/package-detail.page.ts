@@ -8,6 +8,7 @@ import { SessionService } from 'src/app/core/services/session.service';
 import { StatusTypes } from 'src/app/shared/enum/option-type.enum';
 import { SPINNER } from 'src/app/shared/enum/spinner.enum';
 import { GeneralLang } from 'src/app/shared/lang/general.lang';
+import { IHeader } from 'src/app/shared/models/general.interface';
 import { IOrder, IPackageDetail, IPackageManagement } from 'src/app/shared/models/order.interface';
 import { ReqBodyUpdateOrderStatusMiddle } from 'src/app/shared/models/rest.model';
 import { IUser } from 'src/app/shared/models/user.interface';
@@ -27,6 +28,7 @@ export class PackageDetailPage implements OnInit {
   packageSelectorForm: FormGroup;
   packagesForm: FormGroup;
   packageManagement: IPackageManagement[];
+  headerSettings: IHeader;
   totalPackages: number = 0;
   containerList = packageList;
   containerListForm: IPackageDetail[];
@@ -34,7 +36,6 @@ export class PackageDetailPage implements OnInit {
   @Input() modalId: any;
   @Input() order: any;
 
-  protected packageTitle: string = GeneralLang.Title.Packages;
   protected btnFinishPreparation: string = GeneralLang.Buttons.FinishPreparation;
 
   validations = VALIDATIONS;
@@ -93,7 +94,7 @@ export class PackageDetailPage implements OnInit {
       this.c.push(this._formBuilder.group({
         containerId: [this.containerListForm[i].containerId, [Validators.required]],
         containerText: [{value: this.containerListForm[i].containerText, disabled: true}, [Validators.required, Validators.minLength(3)]],
-        quantity: ['', [Validators.required, Validators.min(1)]]
+        quantity: ['', [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+$")]]
       }));
     }
   }
@@ -160,6 +161,17 @@ export class PackageDetailPage implements OnInit {
   }
 
   _initValues(): void {
+    this.headerSettings = {
+      title: GeneralLang.Title.Packages,
+      hasSubtitle: false,
+      back: {
+        status: false
+      },
+      extra: {
+        status: true,
+        icon: 'close'
+      }
+    }
     this.packageSelectorForm = this._frmProvider.packageSelectorFrm();
     this.packagesForm = this._frmProvider.packageFrm();
     // this.addContainer();

@@ -25,6 +25,7 @@ export const VALIDATIONS = {
     quantity: [
         { type: 'required', message: 'Campo requerido.' },
         { type: 'min', message: 'No puede ser menor a 0.' },
+        { type: 'pattern', message: 'Solo puede ingresar valores enteros.'}
     ],
     selector: [
         { type: 'required', message: 'Debe seleccionar almenos un tipo de empaque.' }

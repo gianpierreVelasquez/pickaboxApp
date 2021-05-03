@@ -1,7 +1,6 @@
 <div *ngIf="productList.length > 0">
   <form [formGroup]="productForm" (ngSubmit)="checkOrder(productForm.value)">
-    <ion-item class="g-item--no-padding h-mt--1" *ngFor="let detail of p.controls; let i = index;"
-      [detail]="showDetail">
+    <ion-item class="g-item--no-padding h-mt--1" *ngFor="let detail of p.controls; let i = index;">
       <div [formGroup]="detail">
         <ion-row>
           <ion-col size="12">

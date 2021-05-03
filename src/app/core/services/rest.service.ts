@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ServicePath } from 'src/app/shared/enum/service-path.enum';
-import { IMonitor, IOrder, IQr, IRoute } from 'src/app/shared/models/order.interface';
+import { IDelivery, IMonitor, IOrder, IQr, IRoute } from 'src/app/shared/models/order.interface';
 import { 
   ReqBodyPostPackagesToGetQR, 
   ReqBodyUpdateOrderDetail, 
   ReqBodyUpdateOrderStatusInit, 
   ReqBodyUpdateOrderStatusMiddle, 
+  ReqQueryGetDeliveryPersonsDetail, 
   ReqQueryGetMonitor, 
   ReqQueryGetOrders 
 } from 'src/app/shared/models/rest.model';
@@ -55,5 +56,9 @@ export class RestService {
 
   public getMonitor(queryReq: ReqQueryGetMonitor): Observable<any> {
     return this._http.get<IMonitor>(`${URL + this._rootEntity.ORDER}/monitor`, { params: { ...ReqQueryGetMonitor.create(queryReq) }})
+  }
+
+  public getDeliveryPersonsDetail(queryReq: ReqQueryGetDeliveryPersonsDetail): Observable<any> {
+    return this._http.get<IDelivery>(`${URL + this._rootEntity.ORDER}/delivery-person/detail`, { params: { ...ReqQueryGetDeliveryPersonsDetail.create(queryReq) }})
   }
 }

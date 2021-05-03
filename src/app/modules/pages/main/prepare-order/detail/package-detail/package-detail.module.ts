@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PackageDetailPageRoutingModule } from './package-detail-routing.module';
 
 import { PackageDetailPage } from './package-detail.page';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { PackageDetailPage } from './package-detail.page';
     FormsModule, 
     ReactiveFormsModule, 
     IonicModule,
-    PackageDetailPageRoutingModule
+    PackageDetailPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [PackageDetailPage]
 })

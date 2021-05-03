@@ -11,6 +11,7 @@ import { GeneralLang } from 'src/app/shared/lang/general.lang';
 import { IHeader } from 'src/app/shared/models/general.interface';
 import { IMonitor, IMonitorDetail, IMonitorTotal } from 'src/app/shared/models/order.interface';
 import { ReqQueryGetMonitor } from 'src/app/shared/models/rest.model';
+import { monitorLabelList } from 'src/app/shared/utils/default-props';
 import { _mapUser } from 'src/app/shared/utils/general.util';
 import { environment } from 'src/environments/environment';
 
@@ -33,6 +34,7 @@ export class MonitorPage implements OnInit, OnDestroy {
   lang = GeneralLang;
 
   type = STATUS.MONITOR;
+  labelList = monitorLabelList;
 
   constructor(
     private readonly _frmProvider: FormProvider,
@@ -58,7 +60,7 @@ export class MonitorPage implements OnInit, OnDestroy {
 
   getDateList() {
     var nowDate = new Date();
-    var pastDate = new Date(new Date().setDate(new Date().getDate() - 20));
+    var pastDate = new Date(new Date().setDate(new Date().getDate() - 7));
 
     while (pastDate < nowDate) {
       pastDate.setDate(pastDate.getDate() + 1);
@@ -85,6 +87,30 @@ export class MonitorPage implements OnInit, OnDestroy {
         console.error(err);
         this._generalServ.stopLoading();
       })
+  }
+
+  getLabelByStatus(status: string): string {
+    switch (status) {
+      case StatusTypes.DISPONIBLE:
+        return 'h-c--red'
+        break;
+      case StatusTypes.EN_PREPARACION:
+        return 'h-c--blue'
+        break;
+      case StatusTypes.PREPARADO:
+        return 'h-c--blue'
+        break;
+
+      case StatusTypes.EN_VERIFICACION:
+        return 'h-c--yellow'
+        break;
+      case StatusTypes.VERIFICADO:
+        return 'h-c--yellow'
+        break;
+      default:
+        return 'h-c--green'
+        break;
+    }
   }
 
   getClassByStatus(status: string): string {

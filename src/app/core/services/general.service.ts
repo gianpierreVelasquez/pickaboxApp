@@ -56,7 +56,7 @@ export class GeneralService {
 
   // router
   public route(path: string): void {
-    this._router.navigate([path]);
+    this._router.navigateByUrl(path);
   }
 
   public routeAndParams(path: string, params: any): void {
@@ -66,11 +66,11 @@ export class GeneralService {
       }
     };
 
-    this._router.navigate([path], extras);
+    this._router.navigateByUrl(path, extras);
   }
 
   public getBack(): void {
-    this._location.back()
+    this._location.back();
   }
   // loading
   async showLoading(loader?: ILoader) {

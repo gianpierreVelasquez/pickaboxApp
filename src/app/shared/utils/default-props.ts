@@ -1,6 +1,5 @@
 import { IHeader, ITab } from "../models/general.interface";
 import { IPackageDetail } from "../models/order.interface";
-import { IUser } from "../models/user.interface";
 
 export const defaultHeader: IHeader = {
     title: 'Título',
@@ -68,4 +67,56 @@ export const packageList: Array<IPackageDetail> =
       containerText: "Caja de galletas",
       quantity: 0
     }
-  ]
+]
+
+export const monitorLabelList: Array<any> = [
+    {
+        status: '1',
+        description: 'D',
+        tooltip: 'DISPONIBLE'
+    },
+    {
+        status: '2',
+        description: 'EP',
+        tooltip: 'EN PREPARACIÓN'
+    },
+    {
+        status: '3',
+        description: 'P',
+        tooltip: 'PREPARADO'
+    },
+    {
+        status: '4',
+        description: 'EV',
+        tooltip: 'EN VERIFICACIÓN'
+    },
+    {
+        status: '5',
+        description: 'V',
+        tooltip: 'VERIFICADO'
+    },
+    {
+        status: '6',
+        description: 'EN',
+        tooltip: 'ENTREGADO'
+    }
+]
+
+export const reportHeader: Array<any> = [
+    {
+        width: 'w-30',
+        label: "Código"
+    },
+    {
+        width: 'w-50',
+        label: "Producto"
+    },
+    {
+        width: 'w-20',
+        label: "Cantidad"
+    },
+    {
+        width: 'w-20',
+        label: "Unidad"
+    },
+]

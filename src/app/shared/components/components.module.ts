@@ -9,6 +9,7 @@ import { PrepareOrderProductComponent } from "./prepare-order-product-item/prepa
 import { CheckOrderProductItemComponent } from "./check-order-product-item/check-order-product-item.component";
 import { InputProductItemComponent } from "./input-product-item/input-product-item.component";
 import { MonitorItemComponent } from "./monitor-item/monitor-item.component";
+import { DeliveryItemComponent } from "./delivery-item/delivery-item.component";
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { MonitorItemComponent } from "./monitor-item/monitor-item.component";
         PrepareOrderProductComponent,
         CheckOrderProductItemComponent,
         InputProductItemComponent,
-        MonitorItemComponent
+        MonitorItemComponent,
+        DeliveryItemComponent
     ],
     exports:[
         FormsModule,
@@ -29,7 +31,8 @@ import { MonitorItemComponent } from "./monitor-item/monitor-item.component";
         PrepareOrderProductComponent,
         CheckOrderProductItemComponent,
         InputProductItemComponent,
-        MonitorItemComponent
+        MonitorItemComponent,
+        DeliveryItemComponent
     ],
     imports: [
         CommonModule,

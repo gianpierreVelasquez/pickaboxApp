@@ -1,16 +1,4 @@
-<ion-header>
-    <ion-toolbar color="primary" mode="md">
-        <ion-title size="small">{{ packageTitle }}</ion-title>
-        <ion-buttons slot="end">
-            <!-- <ion-button fill="clear" (click)="addContainer()">
-                <ion-icon slot="icon-only" name="bag-add"></ion-icon>
-            </ion-button> -->
-            <ion-button fill="clear" (click)="onClose()">
-                <ion-icon slot="icon-only" name="close"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-header>
+<app-header [headerConf]="headerSettings" (extraBtnAction)="onClose($event)"></app-header>
 
 <ion-content class="ion-padding h-bc--gray">
 

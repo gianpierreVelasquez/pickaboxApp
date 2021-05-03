@@ -11,11 +11,13 @@ function removeUndefinedFromObj(obj: any): any {
 export class ReqQueryGetOrders {
     public deliveryPersonId: string;
     public status: string;
+    public term?: string;
 
     public static create(obj): ReqQueryGetOrders {
         return removeUndefinedFromObj({
             deliveryPersonId: hasValue(obj.deliveryPersonId) ? '' + obj.deliveryPersonId : undefined,
-            status: hasValue(obj.status) ? '' + obj.status : undefined
+            status: hasValue(obj.status) ? '' + obj.status : undefined,
+            term: hasValue(obj.term) ? '' + obj.term : undefined
         });
     }
 }
@@ -80,6 +82,16 @@ export class ReqQueryGetMonitor {
     public deliveryDate: string;
 
     public static create(obj): ReqQueryGetMonitor {
+        return removeUndefinedFromObj({
+            deliveryDate: hasValue(obj.deliveryDate) ? '' + obj.deliveryDate : undefined
+        });
+    }
+}
+
+export class ReqQueryGetDeliveryPersonsDetail {
+    public deliveryDate: string;
+
+    public static create(obj): ReqQueryGetDeliveryPersonsDetail {
         return removeUndefinedFromObj({
             deliveryDate: hasValue(obj.deliveryDate) ? '' + obj.deliveryDate : undefined
         });

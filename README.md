@@ -14,8 +14,20 @@ UPC Taller de Proyectos I
 
   /*Para construir app compilacion ANDROID*/
   ionic build
+  ionic capacitor add android
   ionic capacitor build android
 
   /*Para construir app compilacion IOS*/
   ionic build
+  ionic capacitor add ios
   ionic capacitor build ios
+
+  /*To add icon and splash*/
+  npm install -g cordova-res
+
+  ###resources/
+  ###├── icon.png
+  ###└── splash.png
+
+  cordova-res android --skip-config --copy
+  cordova-res ios --skip-config --copy

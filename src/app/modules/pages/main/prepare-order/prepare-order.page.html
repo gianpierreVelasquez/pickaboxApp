@@ -6,7 +6,7 @@
                 <ion-item class="g-item--no-padding g-item--transparent">
                     <ion-label>Rutas</ion-label>
                     <ion-select class="g-select" [cancelText]="lang.Buttons.Cancel" [okText]="lang.Buttons.Confirm"
-                        placeholder="Seleccione una ruta" formControlName="deliveryPersonId"
+                        [placeholder]="lang.Text.SelectRoute" formControlName="deliveryPersonId"
                         (ionChange)="selectRoute( $event )">
                         <ion-select-option *ngFor="let route of routes" [value]="route.deliveryPersonId">
                             {{route.deliveryPersonId}}</ion-select-option>
@@ -18,12 +18,12 @@
         <ion-row>
             <ion-col size="12">
                 <ion-item class="g-item--transparent g-item--no-padding g-item--no-hihglight">
-                    <span item-start>
-                        <ion-icon class="h-pl--1 h-fs--2" color="gray" name="search"></ion-icon>
-                    </span>
                     <ion-input class="g-input--sx-padding" color="dark" type="text" autocomplete="off"
-                        formControlName="searchText" placeholder="Buscar...">
+                        formControlName="term" [placeholder]="lang.Text.SearchBy">
                     </ion-input>
+                    <ion-button slot="end" fill="clear" (click)="getOrders(selectedRoute, selectedStatus, $event)">
+                        <ion-icon slot="icon-only" class="h-pl--1 h-fs--2" color="gray" name="search"></ion-icon>
+                    </ion-button>
                 </ion-item>
             </ion-col>
         </ion-row>
@@ -34,7 +34,7 @@
 <ion-content class="ion-no-padding">
 
     <ion-refresher *ngIf="selectedRoute" slot="fixed" (ionRefresh)="getOrders(selectedRoute, selectedStatus, $event)">
-        <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
+        <ion-refresher-content pullingIcon="chevron-down-circle-outline" [pullingText]="lang.Labels.PullToRefresh"
             refreshingSpinner="decrecent" [refreshingText]="refreshOrder">
         </ion-refresher-content>
     </ion-refresher>

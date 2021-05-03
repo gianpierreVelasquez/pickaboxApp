@@ -8,7 +8,9 @@ export const GeneralLang = {
         Cancel: "Cancelar",
         Understood: "Entendido",
         FinishPreparation: "Finalizar preparación",
-        MakeForm: "Armar formulario"
+        MakeForm: "Armar formulario",
+        Continue: "Continuar",
+        Exit: "Salir"
     },
     Labels: {
         Email: "Correo Electrónico: ",
@@ -19,11 +21,25 @@ export const GeneralLang = {
         Products: "Productos: ",
         Deliver: "Entrega: ",
         Packages: "Bultos: ",
-        Route: 'Ruta: ',
-        Center: 'Centro: ',
-        Maker: 'Preparador: ',
-        Delivery: 'Entrega: ',
-        Resume: 'Totales: '
+        Route: "Ruta: ",
+        Center: "Centro: ",
+        Maker: "Preparador: ",
+        Delivery: "Entrega: ",
+        Resume: "Totales: ",
+        Legend: "Leyenda: ",
+        PullToRefresh: "Desliza hacia abajo para actualizar",
+        Clients: "Clientes: ",
+        Deliveries: "Entregas: ",
+        BranchOffice: "Sucursal: ",
+        TotalPackages: "Total Bultos: ",
+        DateOrder: "Fecha Pedido: ",
+        DeliveryRoute: "Ruta Entrega: ",
+        SendTo: "Enviar a:",
+        Total: "Total ",
+        DeliverDate: "Fecha de entrega: ",
+        Executor: "Ejecutor",
+        Sign: "Firma: ",
+        OrderNumber: "Nro Orden: "
     },
     Text: {
         ForgotPass: "Ingresa tu correo electrónico y te enviaremos un enlace para que puedas recueperar tu contraseña.",
@@ -32,8 +48,13 @@ export const GeneralLang = {
         RefreshOrders: "Actualizando ordenes.",
         MissingDateParam: "Falta seleccionar el parametro de fecha",
         RefreshData: "Actualizando información.",
+        SignHer: "Firme aquí",
+        SelectRoute: "Seleccione una ruta",
+        SearchBy: "Buscar por razón social, ruc o nro pedido...",
+        Delivered: "Entregado"
     },
     Title: {
+        ExpiratedSession: "Sesión expirada",
         ForgotPass: "¿Olvidaste tu contraseña?",
         Packages: "Empaques",
         Important: "Importante:",
@@ -41,8 +62,12 @@ export const GeneralLang = {
         Warning: "Advertencia:",
         PackageForm: "Formulario de Paquetes",
         QR: "Etiquetas QR",
+        Report: "Hoja de preparación",
+        ReportList: "Lista de Reportes",
+        ReportOf: "Reporte # "
     },
     Messages: {
+        ExpirateSessionMessage: "Su sesión ha expirado ¿ Desea continuar ?",
         MustSelectRoute: "Debes seleccionar una ruta.",
         ExpectedQuantity: "Debe ingresar la cantidad requerida.",
         LessThanExpectedQuantity: "La cantidad registrada es diferente a la solicitada.",
@@ -51,6 +76,10 @@ export const GeneralLang = {
         CantSaveImage: "No se pudo guardar la imagen.",
         MakeASelection: "Debe seleccionar almenos un tipo de empaque para continuar.",
         OrderReadyToCheck: "Orden lista para verificar.",
-        OrderReadyDeliver: "Orden lista para entregar.",
+        OrderReadyToDeliver: "Orden lista para entregar.",
+        DeliveryNotReady: "Las ordenes aún no estan verificada.",
+        OrdersDelivered: "Ordenes entregadas exitosamente.",
+        ErrorOnProcess: "Ocurrió un error, intentenlo nuevamente",
+        DeliveryReady: "Estas órdenes ya han sido entregadas."
     }
 }

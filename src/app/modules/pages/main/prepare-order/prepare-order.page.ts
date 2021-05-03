@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormProvider } from 'src/app/core/services/form-provider.service';
 import { GeneralService } from 'src/app/core/services/general.service';
@@ -68,7 +68,8 @@ export class PrepareOrderPage implements OnInit {
       
       let bodyReq: any = {
         deliveryPersonId: deliveryPersonId,
-        status: status ? status : StatusTypes.DISPONIBLE
+        status: status ? status : StatusTypes.DISPONIBLE,
+        term: this.prepareForm.controls.term.value
       };
   
       this._restServ.getOrders(bodyReq).toPromise()

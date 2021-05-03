@@ -8,6 +8,7 @@ import { MonitorPageRoutingModule } from './monitor-routing.module';
 
 import { MonitorPage } from './monitor.page';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { TooltipsModule } from 'ionic-tooltips';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
     FormsModule,
     IonicModule,
     MonitorPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    TooltipsModule.forRoot()
   ],
   declarations: [MonitorPage]
 })

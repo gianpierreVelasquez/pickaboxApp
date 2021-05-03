@@ -4,21 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DeliverOrderPageRoutingModule } from './deliver-order-routing.module';
+import { ReportPageRoutingModule } from './report-routing.module';
 
-import { DeliverOrderPage } from './deliver-order.page';
+import { ReportPage } from './report.page';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
-import { TooltipsModule } from 'ionic-tooltips';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DeliverOrderPageRoutingModule,
-    ComponentsModule,
-    TooltipsModule.forRoot()
+    ReportPageRoutingModule,
+    ComponentsModule
   ],
-  declarations: [DeliverOrderPage]
+  declarations: [ReportPage]
 })
-export class DeliverOrderPageModule {}
+export class ReportPageModule {}

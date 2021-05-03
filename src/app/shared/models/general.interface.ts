@@ -42,3 +42,9 @@ export interface ITab {
 export interface ILoader {
     spinner?: any;
 }
+
+export interface IColSupport {
+    label: string;
+    data: any;
+    type: string;
+}
